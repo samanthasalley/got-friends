@@ -13,11 +13,6 @@ deploy:
   on:
     branch: master
   skip_cleanup: true
-- provider: script
-  script: sh $TRAVIS_BUILD_DIR/scripts/staging.sh
-  on:
-    branch: staging
-  skip_cleanup: true
 env:
   global:
   - secure: <TRAVIS SECURE KEY>

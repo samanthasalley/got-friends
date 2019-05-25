@@ -16,7 +16,6 @@ import { AppContainer } from 'react-hot-loader';
 import { BrowserRouter, Route } from 'react-router-dom';
 // components
 import App from './App';
-import LocationListener from './components/navigation/LocationListener';
 // utils
 import store from './store';
 
@@ -27,14 +26,12 @@ const render = (Component) => {
   ReactDOM.render(
     <Provider store={store}>
       <BrowserRouter>
-        <LocationListener>
-          <AppContainer>
-            <Component />
-          </AppContainer>
-        </LocationListener>
+        <AppContainer>
+          <Component />
+        </AppContainer>
       </BrowserRouter>
     </Provider>,
-    document.getElementById('app')
+    document.getElementById('app'),
   );
 };
 

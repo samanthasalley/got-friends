@@ -38,7 +38,7 @@ class Home extends Component {
 
   componentDidMount() {
     checkHashAndscrollToAnchor();
-    if (!exampleData) this.props.getSomeData();
+    if (!this.props.exampleData) this.props.getSomeData();
   }
 
   componentDidUpdate() {

@@ -21,7 +21,7 @@
     &::after {
       width: 3rem;
       height: 2px;
-      background-color: color(darkGray);
+      background-color: color(grayDark);
       display: inline-block;
     }
 
@@ -144,7 +144,7 @@
   // padding: 0 10px;
   // background-color: white;
   font-size: 1.5rem;
-  color: color(darkGrayText2);
+  color: color(grayDarkText2);
   font-weight: regular;
   transform: 0.3s all ease;
 

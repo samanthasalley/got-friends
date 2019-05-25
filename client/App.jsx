@@ -1,3 +1,8 @@
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable react/jsx-closing-bracket-location */
+/* eslint-disable react/jsx-first-prop-new-line */
+/* eslint-disable react/jsx-max-props-per-line */
 /**
  * ************************************
  *
@@ -12,11 +17,9 @@
  */
 
 // dependencies
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 // navigation
-import PrivateRoute from './components/navigation/PrivateRoute';
 import NotFound from './components/navigation/NotFound';
 // pages
 import Home from './components/pages/Home';
@@ -32,42 +35,33 @@ import Footer from './components/Footer';
 import FlashContainer from './components/notifications/FlashContainer';
 
 // styles / assets
-import styles from './stylesheets/modules/containers/App.scss';
+import styles from './stylesheets/modules/App.scss';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-  }
 
-  render() {
-    return (
-      <div className={styles.app}>
-        <FlashContainer />
-        <ModalWrapper />
-        <Navbar />
-        <div className={styles.spacer}></div>
-        <Route component={ScrollToTop} />
-        {/* Switch will go to first matching route and mount either learn-start or authed csx path */}
-        <Switch>
-          {/* === Public routes === */}
-          <Route exact path="/" component={Home} />
-          <Route exact path="/example-form" component={ExampleFormContainer} />
-          <Route exact path="/example-modal" component={() => (
-            <ModalSwitcher render={modalProps => (
-              <Home {...modalProps} />
-            )} />
-          )} />
-          {/* === Private routes === */}
-          {/* NOTE: Not working without auth logic setup */}
-          {/* <PrivateRoute exact path="/example-private-route" component={Home} /> */}
-          <Route component={NotFound} />
-        </Switch>
-        <Footer />
-      </div>
-    );
-  }
-}
-
-App.propTypes = {};
+// eslint-disable-next-line no-unused-vars
+const App = props => (
+  <div className={styles.app}>
+    <FlashContainer />
+    <ModalWrapper />
+    <Navbar />
+    <Route component={ScrollToTop} />
+    {/* Switch will go to first matching route and mount either learn-start or authed csx path */}
+    <Switch>
+      {/* === Public routes === */}
+      <Route exact path="/" component={Home} />
+      <Route exact path="/example-form" component={ExampleFormContainer} />
+      <Route exact path="/example-modal" component={() => (
+        <ModalSwitcher render={modalProps => (
+          <Home {...modalProps} />
+        )} />
+      )} />
+      {/* === Private routes === */}
+      {/* NOTE: Not working without auth logic setup */}
+      {/* <PrivateRoute exact path="/example-private-route" component={Home} /> */}
+      <Route component={NotFound} />
+    </Switch>
+    <Footer />
+  </div>
+);
 
 export default withRouter(App);

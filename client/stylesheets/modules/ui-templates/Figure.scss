@@ -140,7 +140,7 @@
     font-size: 1.6rem;
     font-weight: bold;
     text-align: center;
-    color: color(darkGrayText);
+    color: color(grayDarkText);
 
     @include respond(phone) { // width < 600?
       margin-top: 0;

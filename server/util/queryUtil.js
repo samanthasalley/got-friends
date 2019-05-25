@@ -5,17 +5,18 @@
  * @author  boilerplate
  * @date    boilerplate
  * @description util enabling dynamic query building
- * 
+ *
  * ************************************
  */
 
-const pgdb = require('../models/pgdbmodel');
 const moment = require('moment');
+const pgdb = require('../models/pgdbmodel');
+
 const queryUtil = {};
 
 /**
  * @name handleValueType
- * @param {any} value 
+ * @param {any} value
  * @param {string} type notes the sql data type for value param
  * @description updates value if sql is expecting data in specific
  *              format (i.e. wraps strings in single quotes)

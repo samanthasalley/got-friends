@@ -20,7 +20,7 @@ import PropTypes from 'prop-types';
 // components
 import Modal from '../ui-templates/Modal';
 // import scoped styles
-import styles from '../stylesheets/modules/containers/ModalWrapper.scss';
+import styles from '../../stylesheets/modules/utils/ModalWrapper.scss';
 
 const mapStateToProps = store => ({
   ...store.modal,

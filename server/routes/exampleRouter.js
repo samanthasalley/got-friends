@@ -10,6 +10,7 @@
  */
 
 const express = require('express');
+
 const router = express.Router();
 const exampleController = require('../controllers/exampleController');
 
@@ -23,8 +24,9 @@ router.get('/',
       data: {
         people: res.locals.people,
       },
-    })
-  }
+    });
+  },
+// eslint-disable-next-line function-paren-newline
 );
 
 module.exports = router;

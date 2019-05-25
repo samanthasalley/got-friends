@@ -26,10 +26,10 @@ const flashReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.UPDATE_FLASH_MESSAGE:
       return update(state, { flash: { $set: action.payload.flash } });
-    case types.UPDATE_FLASH_STATUS:
+    case actionTypes.UPDATE_FLASH_STATUS:
       // Updates one specific flash message's status
       return update(state, { [action.flashType]: { [action.arrIndex]: { $set: action.status } } });
-    case types.CLEAR_FLASH_STATUS:
+    case actionTypes.CLEAR_FLASH_STATUS:
       return initialState;
     default:
       return state;

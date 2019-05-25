@@ -18,8 +18,8 @@ import NavLink from './NavLink';
 import RenderLink from './RenderLink';
 import NavbarDrawer from './NavbarDrawer';
 // styles / assets
-import styles from '../stylesheets/modules/containers/Navbar.scss';
-import logo from '../../assets/images/logos/brand-logo.png';
+import styles from '../../stylesheets/modules/navigation/Navbar.scss';
+// import logo from '../../assets/images/logos/brand-logo.png';
 
 const exampleDropdown = [[
   {
@@ -120,7 +120,7 @@ class Navbar extends Component {
         <NavbarDrawer open={this.state.open} toggleNav={this.toggleNav} />
         <nav className={[styles.navbar, 'fixedNavbar'].join(' ')}>
           <div className={styles.brand}>
-            <Link to="/"><img id="logo" src={logo} alt="Brand Icon" /></Link>
+            {/* <Link to="/"><img id="logo" src={logo} alt="Brand Icon" /></Link> */}
           </div>
           {/* left navbar items */}
           <div className={styles.left} ref={e => this.leftNav = e}>
@@ -151,4 +151,4 @@ class Navbar extends Component {
 
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Navbar));
+export default withRouter(Navbar);

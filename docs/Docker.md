@@ -262,8 +262,8 @@ Shortcut: NOTE: This will remove all of your containers, images, and volumes for
 
 The shortcut for this is `npm run docker-remove-all:danger`.  By running this command the following will happen sequentially:
 
-1. `docker rm $(docker ps -a -q -f 'name=<name-partial>') --force`: force removes all containers which contain '<name-partial>' in the name
-2. `docker rmi $(docker images samanthasalley/<name-partial>* -q) --force`: force removes all images which begin with 'samanthasalley/<name-partial>'
-3. `docker volume rm $(docker volume ls -q -f name=<name-partial>) --force`: force removes all volumes which contain the name '<name-partial>'
+1. `docker rm $(docker ps -a -q -f 'name=got-friends') --force`: force removes all containers which contain 'got-friends' in the name
+2. `docker rmi $(docker images samanthasalley/got-friends* -q) --force`: force removes all images which begin with 'samanthasalley/got-friends'
+3. `docker volume rm $(docker volume ls -q -f name=got-friends) --force`: force removes all volumes which contain the name 'got-friends'
 
 If you then run `npm run docker-dev:hot` and/or `npm run docker-build:[dev|prod]` docker will pull down the latest images from DockerHub and rebuild

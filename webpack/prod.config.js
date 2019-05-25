@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const path = require('path');
-const config = require('config');
 const fs = require('fs');
 
 // On build runs, this plugin will create an index.html file in the dist directory that
@@ -47,11 +46,6 @@ const output = {
   publicPath: '/',
 };
 
-// create client config file for use on frontend
-//  save in /utilities directory so no errors on
-//  travis CI
-fs.writeFileSync(paths.UTIL + '/client.json', JSON.stringify({ client: config.client }));
-
 module.exports = {
   entry,
   output,
@@ -61,7 +55,7 @@ module.exports = {
       title: 'production',
       // tack a hash on the end of filenames to enable cache busting
       hash: true,
-      favicon: path.join(paths.IMG, '<favicon-url>'),
+      // favicon: path.join(paths.IMG, '<favicon-url>'), // TODO: add favicon back
       // this is the template that the target is crafted from
       template: path.join(paths.SRC, 'index.html'),
       // drop script tags at the bottom of the body
@@ -163,9 +157,5 @@ module.exports = {
   resolve: {
     // Enable importing JS / JSX files without specifying their extension
     extensions: ['.js', '.jsx'],
-    // Enable retrieval/importing of client config data
-    alias: {
-      config: paths.UTIL + '/client.json',
-    },
   },
 };

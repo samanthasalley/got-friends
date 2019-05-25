@@ -55,7 +55,7 @@ class ModalSwitcher extends Component {
        * defaultProps object contains default data to pass to specified component
        * -> custom modalProps will be used in leiu of these, if provided
        */
-      defaultProps = {
+      defaultProps: {
         ExampleFormContainer: {
           exampleText: 'Default text provided by ModalSwitcher',
         },
@@ -96,15 +96,15 @@ class ModalSwitcher extends Component {
     if (!modalProps) modalProps = this.state.defaultProps[type] || {};
     // declare base content object
     const generatedContent = {
-      name: null, 
+      name: null,
       content: null,
     };
     // set properties on generatedContent based on props provided
     if (this.state.modalOptions[type]) {
-      generatedContent.name = this.state.modalOptions[type];
-      generatedContent.content = (<this.state.modalOptions[type] {...modalProps} />);
-    };
-    else if (customModal && customModal.content) {
+      const ComponentToRender = this.state.modalOptions[type];
+      generatedContent.name = ComponentToRender;
+      generatedContent.content = (<ComponentToRender {...modalProps} />);
+    } else if (customModal && customModal.content) {
       generatedContent.name = customModal.name || 'CustomModal';
       generatedContent.content = customModal.content;
     }

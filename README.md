@@ -17,7 +17,7 @@
 * <specific-container-name>: the name of the docker container for the specified thing (i.e. dependencies / database / etc)
 * <image-name>: dependency or database image name (will need to look at specific context)
 * <specific-image-name>: the name of the docker image for the specified thing (i.e. dependencies / database / etc)
-* <name-partial>: the specific starter of the container/image/volume name in order to remove all at once for this project
+* got-friends: the specific starter of the container/image/volume name in order to remove all at once for this project
 
 ### AWS
 * <aws-ecr>: aws ecr id for this project (where build docker images will be stored for production)

@@ -14,7 +14,7 @@ import { connect } from 'react-redux';
 import * as flashActions from '../../actions/creators/flashActions';
 import FlashMessage from './FlashMessage';
 
-import styles from '../stylesheets/modules/notifications/Flash.scss';
+import styles from '../../stylesheets/modules/notifications/Flash.scss';
 
 const mapStateToProps = store => (
   {

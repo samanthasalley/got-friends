@@ -12,7 +12,7 @@ services:
   # <- to be run from Travis CI
 
   # commands below this are not used anywhere, but will be useful for starting single containers.
-  # namely if you wanted to run <dependencies-image-name> with an elephantSql database you could start the dev or test commands
+  # namely if you wanted to run got-friends-dependencies with an elephantSql database you could start the dev or test commands
   # below with correct database configuration in config/default.json
 
   # BUILD COMMANDS: ->

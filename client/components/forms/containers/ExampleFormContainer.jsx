@@ -13,13 +13,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import * as exampleActions from '../../actions/creators/exampleActions';
+import * as exampleActions from '../../../actions/creators/exampleActions';
 // components
 import ExampleForm from '../ExampleForm';
 import Header from '../../ui-templates/Header';
 import Section from '../../ui-templates/Section';
 // styles / assets
-import styles from '../../stylesheets/modules/forms/formContainer.scss';
+import styles from '../../../stylesheets/modules/forms/formContainer.scss';
 
 const mapStateToProps = store => ({});
 
