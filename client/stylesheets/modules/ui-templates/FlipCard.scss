@@ -1,0 +1,163 @@
+@import '../../shared/utils/all';
+
+
+// Flip Cards must have an explicit height
+.card {
+  display: block;
+  perspective: 150rem;
+  height: 20rem;
+  position: relative;
+
+  @include respond(phone) { // width < 600?
+    height: 13rem;
+    margin-bottom: 5px;
+  }
+
+  &Ribbon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 1rem;
+    height: 100%;
+    width: 100%;
+    transition: all 1.2s ease;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border: 1px solid color('gridLines');
+
+    @include respond(phone) { // width < 600?
+      display: flex;
+      flex-direction: row;
+      padding: 1rem;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &Side {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 2rem;
+    height: 100%;
+    width: 100%;
+    transition: all 1.2s ease;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+
+    p {
+      &:hover {
+        cursor: default;
+      }
+    }
+  
+    figcaption {
+      &:hover {
+        cursor: default;
+      }
+    }
+
+    dl, a, p {
+      // override font size in flipcards on mobile/sm screens so all the back card content fits
+      @include respond(tab-land) {
+        font-size: 1.4rem !important;
+      }
+    }
+
+
+    &Front {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: white;
+      border: 1px solid color('gridLines');
+
+      @include respond(phone) { // width < 600?
+        display: flex;
+        flex-direction: row;
+        padding: 1rem;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      p {
+        text-align: center;
+
+        &:hover {
+          cursor: default;
+        }
+      }
+
+      figcaption {
+        &:hover {
+          cursor: default;
+        }
+      }
+    }
+
+    &Back {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: color('primary-dark');
+      transform: rotateY(180deg);
+      color: #fff;
+      animation-name: changeDisplay;
+      animation-duration: 1.6s;
+      text-align: center;
+
+      p {
+        display: inline;
+        text-align: center;
+        color: #fff;
+
+        &:hover {
+          cursor: default;
+        }
+      }
+
+      dl {
+        display: inline;
+
+        &:hover {
+          cursor: default;
+        }
+      }
+
+      a {
+        display: inline;
+        font-size: 1.6rem;
+      }
+    }
+  }
+  &:focus &SideFront,
+  &:active &SideFront,
+  &:hover &SideFront {
+    transform: rotateY(-180deg);
+  }
+
+  &:focus &SideFront,
+  &:active &SideFront,
+  &:hover &SideBack {
+    transform: rotateY(0deg);
+  }
+}
+
+.arrow {
+  display: none;
+  font-size: 2rem;
+  font-weight: bold;
+  color: color(secondary-light);
+
+  @include respond(phone) { // width < 600?
+    display: inline-block;
+  }
+}
+
+
+@keyframes changeDisplay {
+  0%   {display: none;}
+  100% {display: inline;}
+}

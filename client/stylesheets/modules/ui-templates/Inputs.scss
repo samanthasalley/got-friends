@@ -1,0 +1,11 @@
+@import "../../shared/utils/all";
+
+.input {
+  width: $input-width;
+  height: $input-height;
+  font-size: 1.5rem;
+  padding: 0 1.5rem;
+  border: 2px solid color(lightGray);
+  border-radius: $primary-radius;
+  color: color(darkGrayText);
+}

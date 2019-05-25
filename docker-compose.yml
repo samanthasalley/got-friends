@@ -1,0 +1,116 @@
+version: "3"
+services:
+  # To be run from Travis CI ->
+  # docker-compose run --rm --service-ports start-prod
+  start-prod:
+    image: samanthasalley/got-friends
+    ports:
+      - "3000:3000"
+    volumes:
+      - /usr/src/app
+    command: npm start
+  # <- to be run from Travis CI
+
+  # commands below this are not used anywhere, but will be useful for starting single containers.
+  # namely if you wanted to run <dependencies-image-name> with an elephantSql database you could start the dev or test commands
+  # below with correct database configuration in config/default.json
+
+  # BUILD COMMANDS: ->
+  # docker-compose run --rm build-dev
+  build-dev:
+    image: samanthasalley/got-friends-dependencies
+    container_name: "got-friends-dev"
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm run build:dev
+
+  # docker-compose run --rm build-prod
+  build-prod:
+    image: samanthasalley/got-friends-dependencies
+    container_name: "got-friends-prod"
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm run build:prod
+  # <- Build Commands
+
+
+  # Bash - allows for running scripts in container.
+  # docker-compose run --rm --service-ports bash
+  bash:
+    image: samanthasalley/got-friends-dependencies
+    container_name: "got-friends-dev"
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    # command: '/bin/bash'
+
+
+  # DEV COMMANDS: without spinning up docker/postgres  ->
+  # docker-compose run --rm --service-ports dev
+  dev:
+    image: samanthasalley/got-friends-dependencies
+    container_name: "got-friends-dev"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm run dev
+
+  # docker-compose run --rm --service-ports dev-hot
+  dev-hot:
+    image: samanthasalley/got-friends-dependencies
+    container_name: "got-friends-dev-hot"
+    ports:
+      - "8080:8080"
+      - "3000:3000"
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm run dev:hot
+  # <- Dev Commands: without spinning up docker/postgres
+
+
+
+  # TEST COMMANDS: without spinning up docker/postgres ->
+  # docker-compose run --rm --service-ports test
+  test:
+    image: samanthasalley/got-friends-dependencies
+    container_name: "got-friends-test"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm run test
+
+  # docker-compose run --rm --service-ports test-updateSnapshot
+  test-updateSnapshot:
+    image: samanthasalley/got-friends-dependencies
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm run test-updateSnapshot
+
+  # docker-compose run --rm --service-ports test-watch
+  test-watch:
+    image: samanthasalley/got-friends-dependencies
+    container_name: "got-friends-test"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm run test-watch
+  # <- Test Commands: without spinning up docker/postgres
+
+
+
+
+

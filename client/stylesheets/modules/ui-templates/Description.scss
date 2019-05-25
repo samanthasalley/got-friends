@@ -1,0 +1,56 @@
+@import "../../shared/utils/all";
+
+.description {
+  font-size: 1.6rem;
+  
+  &Sm {
+    font-size: 1.4rem;
+  }
+}
+
+.thin {
+  max-width: 81rem;
+}
+
+.light {
+  color: color(darkGrayText2);
+}
+
+.white {
+  color: white;
+}
+
+.inline {
+  display: inline;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.alignRight {
+  text-align: right;
+}
+
+.alignLeft {
+  text-align: left;
+}
+
+.tabDescription {
+  max-width: 81rem;
+  margin: 0 0 2rem 0;
+  text-align: center;
+  font-size: 1.6rem;
+  color: color(darkGrayText);
+}
+
+.remove {
+  &Margin {
+    &Bottom {
+      margin-bottom: 0;
+    }
+    &Top {
+      margin-top: 0;
+    }
+  }
+}

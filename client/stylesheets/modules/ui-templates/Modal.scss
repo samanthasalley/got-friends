@@ -1,0 +1,49 @@
+@import '../../shared/utils/all';
+
+.modal {
+  background: color(blueGray);
+  position: relative;
+  min-width: 70rem;
+  padding: 3rem;
+  height: fit-content;
+  padding-top: 10%;
+  padding-bottom: 10%;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 3rem;
+
+  img {
+    width: 4rem;
+    height: 4rem;
+    margin-right: 5px;
+  }
+
+  figcaption {
+    font-size: 3rem;
+    color: color(primary-dark);
+    margin: 0 2rem 0 0;
+  }
+}
+
+.close {
+  position: absolute;
+  padding: 5px 6px;
+  top: 0;
+  right: 0;
+  font-size: 2rem;
+  border: none;
+  background: transparent;
+  z-index: 10001;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+// .content {
+  
+// }

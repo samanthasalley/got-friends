@@ -1,0 +1,16 @@
+@import '../utils/all';
+
+/* styles shared across form fields, such as styling for help text */
+.help {
+  padding: 0.5rem 1rem;
+}
+
+.disabled {
+  background: color(lightGray) !important;
+  cursor: default !important;
+}
+
+/* special apply code input styling for pre-filled code field */
+.prefilledApplyCode {
+  border-color: color(primary-dark) !important;
+}

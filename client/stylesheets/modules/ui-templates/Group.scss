@@ -1,0 +1,590 @@
+@import "../../shared/utils/all";
+
+// Classes for multi-column layouts and spacing within sections TODO: Probably move to shared
+// TODO: Rewrite columns to handle responsiveness cleanly
+.subsection {
+  // margin-bottom: $section-margin;
+  display: grid;
+  max-width: 120rem;
+  margin: 0 auto;
+}
+
+
+// Used for events and numbered sections when you need a line break between articles
+.underline {
+  @extend .subsection;
+  grid-template-columns: 1fr;
+
+  h2 {
+    margin-bottom: 1rem;
+  }
+
+  p {
+    @include respond(phone) {
+      margin-bottom: 1rem !important;
+    }
+  }
+
+  & > article {
+    padding: 1.5rem 0;
+    
+    &:not(:last-child) {
+      border-bottom: 1px solid color(gridLines);
+    }
+  }
+}
+
+// Used to center content in a section. Primarily used for buttons
+.center {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.autoTopMargin {
+  margin-top: auto;
+}
+
+// Used for buttons that are placed in sections with backgorundStyles in order to offset the padding
+.reducedMargin {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  margin-bottom: -3.5rem;
+}
+
+//Used for icon groups like on the Program in the curriculum overview section
+.iconsTwoCol {
+  @extend .subsection;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 2rem;
+
+  @include respond(tab-land) { // width < 600?
+    // grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    // give the articles margin and a max-width
+    article {
+      margin-bottom: 2rem;
+      max-width: 80rem;
+      
+      // Bring the image closer to the text
+      figure {
+        justify-content: flex-end;
+
+        @include respond(phone) {
+          justify-content: center;
+        }
+      }
+    }
+  }
+
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+// USEd for call to action sections
+.callToAction {
+  @extend .subsection;
+  grid-template-columns: repeat(2, 1fr);
+
+   p:nth-of-type(1) {
+     margin-bottom: 1rem;
+   }
+
+  article {
+    padding: 3rem;
+    // align buttons at bottom
+    div:nth-of-type(2) {
+      margin-top: auto;
+    }
+  }
+
+  @include respond(tab-land) { // width < 600?
+    // grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.consistentArticleHeight {
+  @include respond(phone) {
+    > article {
+      // specifically set height here so that side by side articles take up same height
+      height: 100%;
+    }
+  }
+}
+
+// Used for quote sections
+.quote {
+  max-width: 75%;
+  margin: 0 auto;
+
+  & > article header {
+    margin-bottom: 3rem;
+  }
+
+  & > article header h2 {
+
+    @media(max-width: 400px) {
+      font-size: 2.1rem;
+    }
+
+    &::before,
+    &::after {
+      position: absolute;
+      color: color(primary);
+      font-size: 20rem;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    &::before {
+      content: '\201C';
+      top: -7rem;
+      left: -8rem;
+
+      @media(max-width: 400px) {
+        left: -6rem;
+      }
+    }
+
+    &::after {
+      content: '\201D';
+      bottom: -17.5rem;
+      right: -5rem;
+
+      @media(max-width: 400px) {
+        right: -6rem;
+      }
+    }
+
+  }
+
+  & > article {
+    border: none;
+  }
+}
+
+// For sections with team member grids
+.teamMembers {
+  @extend .subsection;
+
+  > article {
+    padding: 3rem;
+    text-align: center;
+
+    @include respond(tab-port) {
+      padding: 2rem;
+    }
+  }
+}
+
+
+// Class used for flipcard sections
+.flipCards {
+  @extend .subsection;
+  grid-template-columns: repeat(3, 1fr);
+
+  @include respond(tab-port) { // width < 600?
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond(phone) { // width < 600?
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+// Class used for grad companies section
+.gradCompanies {
+  @extend .subsection;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 150px);
+  grid-gap: 1rem;
+
+  article {
+    justify-content: center;
+  }
+}
+
+.culture {
+  @extend .subsection;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 150px);
+  grid-gap: 1rem;
+
+  article {
+    justify-content: center;
+
+    > div:first-of-type {
+      height: 100%
+    }
+  }
+}
+
+//Small Group
+// Used for groups that do not take up the entirety of the screen. For example, the download syllabus sections
+// Use the icon group for the articles in tabcontent with icons for images
+.smallGroup {
+  @extend .subsection;
+  background-color: color(blueGray);
+  padding: $padding-4;
+  max-width: 81rem;
+  
+  button {
+    margin-top: 2rem;
+  }
+
+  article {
+    background-color: transparent;
+  }
+}
+
+// Used for icon groups
+.iconGroup {
+  @extend .subsection;
+  max-width: 81rem;
+  
+  article {
+    background-color: transparent;
+  }
+}
+
+// Used for single article groups that need a max-width - currently used for projects page
+.singleGroup {
+  @extend .subsection;
+  max-width: 100rem;
+  
+  article {
+    background-color: transparent;
+  }
+}
+
+// For single articles that exist seperate from other content. Mostly seen at the top of pages
+.singleArticle {
+  @extend .subsection;
+  grid-template-columns: 1fr;
+
+  article {
+    @include respond(tab-port) {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  & > article {
+    margin-bottom: 2rem;
+  }
+}
+
+// For articles with different colored backgrounds
+.coloredArticles {
+  @extend .subsection;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+
+  > article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem;
+  }
+
+  > article:nth-of-type(1) {
+    color: #fff;
+    background-color: color(darkGrayText);
+
+    p, a {
+      color: #fff;
+    }
+  }
+
+  > article:nth-of-type(2) {
+    color: color(darkGrayText);
+    background-color: color(secondary-light);
+
+    p, a {
+      color: color(darkGrayText);
+    }
+  }
+
+  > article:nth-of-type(3) {
+    color: #fff;
+    background-color: color(primary-dark);
+
+    p, a {
+      color: #fff;
+    }
+  }
+
+  > article:nth-of-type(4) {
+    color: color(darkGrayText);
+    background-color: #DFE6EC;
+
+    p, a {
+      color: color(darkGrayText);
+    }
+  }
+
+  @include respond(tab-land) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond(phone) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+// For articles with different colored backgrounds
+.reverseColoredArticles {
+  @extend .subsection;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+
+  > article {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem;
+  }
+
+  > article:nth-of-type(4) {
+    color: #fff;
+    background-color: color(darkGrayText);
+
+    p, a {
+      color: #fff;
+    }
+  }
+
+  > article:nth-of-type(3) {
+    color: color(darkGrayText);
+    background-color: color(secondary-light);
+
+    p, a {
+      color: color(darkGrayText);
+    }
+  }
+
+  > article:nth-of-type(2) {
+    color: #fff;
+    background-color: color(primary-dark);
+
+    p, a {
+      color: #fff;
+    }
+  }
+
+  > article:nth-of-type(1) {
+    color: color(darkGrayText);
+    background-color: #DFE6EC;
+
+    p, a {
+      color: color(darkGrayText);
+    }
+  }
+
+  @include respond(tab-land) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond(phone) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+// Used for sideBYSide section with sideBySide articles to the right.
+// For example, the campus instructor sections
+.rows {
+  @extend .subsection;
+  grid-template-columns: 1fr;
+
+  img {
+    @include respond(phone) {
+      margin-bottom: 1rem;
+    }
+  }
+}
+
+// Used for the tuition section on the program page
+.tuition {
+  @extend .subsection;
+  grid-template-columns: repeat(2, 1fr);
+  // grid-column-gap: 9rem;
+
+  // center the content within each article
+  article {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include respond(tab-land) {
+      margin-bottom: 2rem;
+    }
+  }
+
+  // select the first article and give the button padding
+  article:nth-of-type(1) {
+    button {
+      margin-top: 2rem;
+    }
+  }
+
+  article:nth-of-type(2) {
+    // give the icon images in the right article some margin
+    img {
+      margin-right: 1rem;
+
+      @include respond(tab-land) {
+        margin-right: 0;
+        margin-bottom: 2rem;
+      }
+    }
+
+    // give the articles some bottom margin to seperate them 
+    article {
+      margin-bottom: 2rem;
+    }
+  }
+
+  @include respond(tab-land) { // width < 600?
+    // grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/*
+ * ==============
+ * ==============
+ * COLUMN OPTIONS
+ * ==============
+ * ==============
+ */
+
+.add {
+  &Gap {
+    grid-gap: 5px;
+  }
+}
+
+
+// Used for sections where articles line up in one column
+.oneCol {
+  @extend .subsection;
+  grid-template-columns: 1fr;
+
+  & > article {
+    margin-bottom: 2rem;
+  }
+}
+
+// Used for sections where articles line up side by side
+.twoCol {
+  @extend .subsection;
+  grid-template-columns: repeat(2, 1fr);
+
+  @include respond(tab-land) { // width < 600?
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+// Used for sections where articles line up side by side and must be centered vertically
+// i.e. outcomes page - 'oucomes-numbers' section
+.centeredVertically {
+  align-items: center;
+}
+
+// used to override col styling and force mobile groups to two columns
+// i.e. for team members to display two side by side even on mobile
+.twoColMobile {
+  @include respond(phone) {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-gap: 5px !important;
+  }
+}
+
+.threeCol {
+  @extend .subsection;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 5px;
+
+  @include respond(phone) { // width < 600?
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.fourCol {
+  @extend .subsection;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+
+  @include respond(tab-land) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond(phone) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.fiveCol {
+  @extend .subsection;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 5px;
+
+  @include respond(tab-land) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @include respond(tab-port) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include respond(phone) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

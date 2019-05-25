@@ -1,0 +1,598 @@
+// import utils
+@import "../shared/utils/all";
+
+.body {
+  // background: lightblue;
+  // text-align: center;
+}
+
+
+.header{ 
+  text-align: center;
+}
+
+main {
+  width: 100vw;
+}
+
+.row {
+  display: flex;
+
+  @include respond(phone) {
+    flex-direction: column;
+  }
+}
+
+//////////////////////////////////////////////
+// SPLASH STYLES
+//////////////////////////////////////////////
+.splash {
+  position: relative;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  background-position: 25% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: white;
+  text-align: left;
+
+  @include respond(tab-port){
+    padding: 0;
+    min-height: 90vh;
+    max-height: 105vh;
+  }
+
+  button {
+    width: 30rem;
+    height: 4rem;
+  }
+
+  &Header {
+    @include respond(tab-land) {
+      display: flex;
+      justify-content: center;
+      flex-direction: row;
+
+      @media (max-width: 46.87em){
+        flex-direction: column;
+      }
+      
+      h2:first-of-type {
+        margin-right: 1rem;
+
+        @media (max-width: 38.75em){
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  &Overlay {
+    background-color: rgba(36, 39, 42, 0.55);
+    height: 100%;
+  }
+
+  &Column {
+    background-color: rgba(color(primary-dark), 0.9);
+    margin-right: 5%;
+    width: 52rem;
+    padding: 2rem 2rem;
+    transform: translateY(-4rem);
+
+    @include respond(tab-land){
+      height: 100%;
+      width: 100%;
+      margin-right: 0;
+      margin-top: 0;
+      display: flex;
+      padding: 1rem 1rem;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform: translateY(0);
+    }
+
+    div dl {
+      text-align: center;
+      font-weight: 600;
+      margin-top: 0;
+      margin-bottom: 1rem;
+    }
+
+    hr {
+      opacity: 0.5;
+      max-width: 50rem;
+      margin: 1rem auto;
+
+      @include respond(tab-land) {
+        width: 50rem;
+      }
+
+      @include respond(phone) {
+        width: 32rem;
+      }
+
+      
+    }
+  }
+
+  &Container {
+    // border-bottom: 1px solid rgba(color(blueGray), 0.3);
+    
+    @include respond(tab-land){
+      text-align: center;
+    }
+
+    dl {
+      text-align: center;
+    }
+
+    h2 {
+      color: #fff;
+      font-weight: 600;
+      font-size: 3.6rem;
+      margin: 0;
+    }
+
+    h3 {
+      font-weight: 600;
+      font-size: 1.8rem;
+      text-transform: uppercase;
+      color: #eee;
+      margin: 1rem 0;
+    }
+
+    input {
+      width: 100%;
+    }
+  }
+}
+
+//////////////////////////////////////////////
+// SPLASH RIBBON STYLES
+//////////////////////////////////////////////
+
+.center {
+  display: flex;
+  justify-content: center;
+  transform: translateY(-50%);
+
+  @include respond(tab-port) { // width < 600?
+    transform: translateY(-30%);
+  }
+
+  @include respond(phone) { // width < 600?
+    transform: translateY(0);
+  }
+}
+
+.splashRibbon {
+  width: 90%;
+
+  @include respond(phone) { // width < 600?
+    margin-bottom: $section-margin;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+
+    @include respond(tab-land) {
+      grid-template-columns: repeat(4, auto);
+    }
+
+    @include respond(tab-port) {
+      grid-template-columns: repeat(2, auto);
+    }
+
+    @include respond(phone) {
+      grid-template-columns: repeat(1, auto);
+    }
+  }
+
+  .ribbonCard {
+    text-align: center;
+
+    @include respond(tab-land) {
+      > article {
+        padding: 1rem;
+      }
+    }
+
+    h3 {
+      font-size: 2.5rem;
+      font-weight: 500;
+    }
+
+    h5 {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      margin: 0;
+      padding: 0 6px;
+      font-size: 1.4rem;
+      line-height: 2rem;
+    }
+
+    // Styles for each inidividual RibbonCard
+    // Styles for first Ribbon Card
+    &1 {
+      p {
+        margin-bottom: 1rem;
+      }
+
+      figure:nth-of-type(1) {
+        display: inline;
+        margin-right: 2rem;
+        
+        img {
+          display: inline;
+          height: 2.5rem;
+        }
+      }
+  
+      figure:nth-of-type(2) {
+        display: inline;
+
+        img {
+          display: inline;
+        }
+      }
+
+      @include respond(phone) {
+        width: 100%;
+      }
+    }
+
+    &2 {
+      p:nth-of-type(1) {
+        margin-bottom: 1.5rem;
+      }
+
+      @include respond(phone) {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    &3 {
+      figure {
+
+        img {
+          height: 8rem;
+        }
+      }
+    }
+
+    &4 {
+      @include respond(phone) {
+        display: flex;
+        align-items: center;
+      }
+
+      figure {
+        display: inline;
+
+        img {
+          display: inline;
+        }
+      }
+
+      .locations {
+        display: flex;
+      }
+    }
+  }
+
+  .divider {
+    position: absolute;
+    top: 20%;
+    bottom: 20%;
+    border-left: 2px solid #979797;
+  }
+}
+
+//////////////////////////////////////////////
+// Community STYLES
+//////////////////////////////////////////////
+
+.anchor {
+  display: flex;
+  justify-content: center;
+
+  a {
+    margin-top: 2rem;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    text-align: center;
+    border-bottom: 2px solid;
+  }
+}
+
+.modalContainer {
+  margin-top: 1em;
+}
+
+.csLogoContainer {
+  background: rgb(29, 26, 26);
+  padding: 1rem;
+  height: 7rem;
+  width: 7rem;
+  margin: auto;
+
+  img {
+    height: 5rem;
+    width: 5rem;
+  }
+}
+%section {
+  display: grid;
+  grid-template-columns: 6% 88% 6%;
+  padding-top: 8rem;
+}
+
+.graySection {
+  @extend %section;
+  //  background-color: #f7f7f7;
+}
+
+.whiteSection {
+  @extend %section;
+  background-color: #ffffff;
+}
+
+
+
+///////////////////////////////////////////////////////////
+// Position styles
+///////////////////////////////////////////////////////////
+
+.center {
+  margin: 0 auto;
+}
+
+
+// Centered content divider
+.content {
+  align-self: center;
+  grid-column: 2/3;
+
+  .headline {
+    text-align: center;
+
+    h1 {
+      font-family: inherit;
+      font-weight: 300;
+      line-height: 1.1;
+      color: #34495e;
+    }
+  }
+}
+
+%subsection {
+  margin-bottom: 11rem;
+  display: grid;
+}
+
+.oneCol {
+  @extend %subsection;
+  grid-template-columns: 1fr;
+}
+
+.twoCol {
+  @extend %subsection;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 1.6rem;
+  padding: 2rem;
+  background-color: color(blueGray);
+}
+
+// .threeCol {
+//   @extend %subsection;
+//   grid-template-columns: repeat(3, 1fr);
+//   grid-column-gap: 3.2rem;
+// }
+
+.fourCol {
+  @extend %subsection;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.left {
+  text-align: left;
+}
+
+.caretRight {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top: 4px dashed;
+  // border-top: 4px solid\9;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  border-left: 4px dashed;
+  border-left: 4px solid\9;
+}
+
+///////////////////////////////////////////////////////////
+// Company Ribbon Styles
+///////////////////////////////////////////////////////////
+
+.companyRibbon {
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 2.8rem;
+    color: #c6d0d0;
+  }
+}
+
+.companyRibbon > div:first-of-type {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  hr {
+    border: none;
+    height: 3px;
+    background-color: #34495e;
+  }
+}
+
+.buttonDivider {
+  width: 5rem;
+  height: auto;
+  display: inline-block;
+}
+
+.background {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  height: 100%;
+  background-color: color(blueGray);
+}
+
+
+
+///////////////////////////////////////////////////////////
+// Locations Styles
+///////////////////////////////////////////////////////////
+.location {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10rem;
+
+  &Grid {
+    width: 90%;
+    display: grid;
+    grid-template-columns: 4fr 2fr 3fr;
+    grid-template-rows: repeat(6, 5vw);
+    grid-gap: 2rem;
+  }
+
+  &Image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    // display: block;
+  }
+
+  &Item {
+    
+  }
+
+
+  &Item1 {
+    // background-item: url(../../assets/items/rebuild-items/la-codesmith-office.jpg);
+    // background-repeat: no-repeat;
+    // background-size: cover;
+    // background-color: green;
+    grid-column: 1 / 2;
+    grid-row: 1 / -1;
+  }
+
+  &Item2 {
+    background-color: dodgerblue;
+    grid-column: 2 / 3;
+    grid-row: 1 / 4;
+  }
+
+  &Item3 {
+    background-color: red;
+    grid-column: 2 / 3;
+    grid-row: 4 / -1;
+  }
+
+  &Item4 {
+    background-color: salmon;
+    grid-column: 3 / 4;
+    grid-row: 1 / 5;
+  }
+
+  &Item5 {
+    background-color: gainsboro;
+    grid-column: 3 / 4;
+    grid-row: 5 / -1;
+  }
+}
+
+///////////////////////////////////////////////////////////
+// Overlay Styles for the Location component
+///////////////////////////////////////////////////////////
+
+.overlay {
+  opacity: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: linear-gradient(to top, color(primary), rgba(0,0,0,0));
+  padding: 2rem;
+  transition: .3s all ease;
+
+  h2 {
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 2rem;
+    transform: translateY(100%);
+    transition: .3s all ease;
+  }
+
+  p {
+    margin: 0;
+    color: #fff;
+    transform: translateY(100%);
+    transition: .3s all ease;
+  }
+
+  &:hover {
+    opacity: 1;
+  }
+
+  &:hover h2,
+  &:hover p {
+    transform: translateY(0);
+  }
+
+}
+
+///////////////////////
+// PAGE MARGIN STYLES
+///////////////////////
+.sectionMarginBottom {
+  margin-bottom: 10rem;
+}
+
+.removeSectionMargin {
+  > section {
+    margin-top: 0 !important;
+  }
+}
+
+// TODO: update removeSectionMargin to here with &None
+.sectionMarginTop {
+  &Md {
+    > section {
+      margin-top: 5rem !important;
+    }
+  }
+}

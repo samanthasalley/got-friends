@@ -1,0 +1,93 @@
+@import "../../shared/utils/_all";
+
+.tabSection {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+}
+
+
+// Styles for the container that holds all tabs
+.tabs {
+  margin-bottom: 1rem;
+  max-width: 110rem;
+  white-space: nowrap;
+  height: 100%;
+  overflow-x: scroll;
+  padding-bottom: 1rem;
+  margin-bottom: -1rem;
+  margin-right: 0;
+
+  /* use this to hide scrollbar bc its ugly and annoying
+   * NOTE: doesn't work in IE or Firefox
+   * @see https://stackoverflow.com/a/41166266 */
+  &::-webkit-scrollbar {
+    width: 0 !important;
+  }
+  
+  // these media queries adjust the max-size of the tabs container
+  // For some reason the initial max-width would not allow for complete responsiveness
+  @include respond(tab-land) {
+    max-width: 60rem;
+  }
+
+  @include respond(tab-port) {
+    max-width: 50rem;
+  }
+
+  @include respond(phone) {
+    max-width: 35rem;
+  }
+  @media (max-width: 375px) {
+    max-width: 32rem;
+  }
+
+  @media (max-width: 350px) {
+    max-width: 28rem;
+  }
+}
+
+.tabContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5rem;
+}
+
+.arrow {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 1rem;
+  height: 3rem;
+  background: linear-gradient(to right, rgba(0,0,0,0), rgba(241, 237, 237, 0.5));
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  font-size: 4.6rem;
+  height: 5rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+  
+  img {
+    max-height: 4.6rem;
+  }
+}
+
+.iconLeft {
+  // background-color: color(darkGrayText2);
+  background: linear-gradient(to right, color(darkGrayText), color(darkGrayText2));
+}
+
+.iconRight {
+  // background-color: color(darkGrayText2);
+  background: linear-gradient(to left, color(darkGrayText), color(darkGrayText2));
+}

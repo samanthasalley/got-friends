@@ -1,0 +1,20 @@
+# Start with Node v10.15.1
+FROM node:10.15.1
+
+# Working directory for application
+WORKDIR /usr/src/app
+
+# npm install into /usr/src/app
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+COPY package*.json /usr/src/app/
+RUN npm install
+
+# copy webapp files to container & build:prod
+COPY . /usr/src/app/
+RUN npm run build:prod
+
+# replace this with your application server's default port
+EXPOSE 3000
+
+# run migrations and start server in container
+CMD ["/bin/bash", "-c", "./scripts/start-prod-app.sh"]

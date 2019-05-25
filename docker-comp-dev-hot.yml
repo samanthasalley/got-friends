@@ -1,0 +1,16 @@
+# command to run:
+# docker-compose -f docker-comp-dev.yml -f docker-comp-dev-hot up
+
+# This will start dependencies container & postgres db container with it's associated data volumes container
+# and run 'npm run dev:hot'
+
+#  note the use of 2 '-f' in command. Second file overwrites, first one
+
+version: "3"
+services:
+  # updates dev service from docker-comp-dev.yml with new container_name, new command, and additional port (to include HMR)
+  dev:
+    container_name: "got-friends-dev-hot"
+    ports:
+      - "8080:8080"
+    command: ["./scripts/start-dev-app.sh", "postgres-db", "dev:hot"]

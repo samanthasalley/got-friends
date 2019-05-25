@@ -1,0 +1,10 @@
+{
+    "AWSEBDockerrunVersion": "1",
+    "Image": {
+        "Name": "<aws-ecr>.dkr.ecr.<aws-region>.amazonaws.com/got-friends:<VERSION>",
+        "Update": "true"
+    },
+    "Ports": [{
+        "ContainerPort": "3000"
+    }]
+}

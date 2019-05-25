@@ -1,0 +1,24 @@
+@import '../../shared/utils/all';
+
+.drawer {
+  padding-top: 7rem;
+  position: fixed;
+  height: 80vh;
+  width: 100%;
+  background-color: #fff;
+  display: none;
+  text-emphasis: center;
+  transition: .3s all ease;
+  z-index: 3;
+  overflow-y: hidden;
+
+  @include respond(tab-land) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    a {
+      text-align: center;
+    }
+  }
+
+}

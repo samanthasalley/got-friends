@@ -1,0 +1,57 @@
+// default font stack
+$font-stack: 'Source Sans Pro', sans-serif;
+
+// these can be used with map-get
+$colors: (
+  'csxGreen': #1DCB93,
+  'csxBlueGray': #676e7b,
+  'csxDarkGray': #333,
+  // approved
+  'csxBlue': #0099ff,
+  'csxDarkBlue': #2A95EB,
+  'csxHeaderBlue': #34495e,
+  'csxBackgroundGray': #F9F9F9,
+  'csxLightGray': #F2F2F2,
+  'csxGray': #7D7E7F,
+  'csxNavbar': #363E46,
+
+  //NEW COLORS
+  'white': #fff,
+  'secondary-light': #9EE6D6,
+  'secondary-dark': #7DD0BE,
+  'primary': #1B44A0,
+  'primary-dark':#0F3181,
+  'blueGray': #F0F5F9,
+  'lightGray': #E1E5E8,
+  'darkGray': #4C4C4C,
+  'gridLines': #E9E9E9, // Used for grid lines for sections and borders
+  'darkGrayText': #171717, // Used for Headers
+  'darkGrayText2': #4C4C4C, //Used in tab descriptions, body text, such as p tags
+  'lightGrayText': #6F6D6D, // Used for <small> tags 
+);
+
+//PADDING
+$small-margin: 2rem;
+$large-margin: 3.2rem;
+$padding-1: 1rem;
+$padding-2: 2rem;
+$padding-3: 3rem;
+$padding-4: 4rem;
+$padding-5: 5rem;
+$padding-10: 10rem;
+
+$section-margin: 7rem;
+$footer-margin: 7rem;
+$footer-margin-medium: 4rem;
+$footer-margin-small: 2rem;
+
+//WIDTHS AND HEIGHTS
+$input-width: 40rem;
+$input-height: 5rem;
+
+// BORDER
+$cs-main-box: 1px 1px 2px #ddd;
+$navbar-height: 7rem;
+
+// BORDER RADIUS
+$primary-radius: 10rem;

@@ -1,0 +1,491 @@
+@import '../../shared/utils/all';
+
+/* ==== SHARED STYLES ==== */
+// WARNING: This img tag overrides other SCSS files
+// img {
+//   width: 100%;
+//   height: 100%;
+//   // set max width for imgs
+//   max-width: 100px;
+// }
+
+%article {
+  display: grid;
+  // border: 1px solid color(gridLines);
+  // padding: 1rem;
+}
+
+/* ==== SIDE BY SIDE SPECIFIC STYLES ==== */
+.sideBySide {
+  @extend %article;
+  // grid-template-columns: 1fr 3fr;
+  grid-template-columns: repeat(12, 1fr);
+  grid-column-gap: 2rem;
+  text-align: left;
+  background-color: #fff;
+
+  @include respond(phone) { // width < 600?
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  &:hover .left .overlay{
+    background-color: rgba(color(primary-dark), 0.7);
+  }
+
+  &:hover .left .overlay button{
+    opacity: 1;
+  }
+}
+
+// LEFT STYLES
+
+.rounded {
+  border-radius: 50%;
+}
+
+//RIGHT STYLES
+
+// Default styles for left sides of articles
+.right {
+  // right styles
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  @include respond(phone) { // width < 600?
+    align-items: center;
+  }
+
+  p:not(:last-child) {
+    margin:  0 0 1rem 0;
+  }
+  
+  p {
+    margin-top: 0;
+  }
+
+  p:last-of-type {
+    margin-bottom: 0;
+  }
+
+}
+//LEFT STYLES
+
+// Default styles for left side of articles
+.left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  p {
+    margin:  0 0 1rem 0;
+  }
+
+  @include respond(phone) { // width < 600?
+    align-items: center;
+  }
+}
+
+// Styles for events with a blue left side
+.eventBlue {
+  background: linear-gradient(to top, color(primary-dark), color(primary));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0 1rem;
+
+  p {
+    font-weight: 300;
+    color: #fff;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+}
+
+// Styles for events with a green left side
+.eventGreen {
+  background: linear-gradient(to top, color(secondary-dark), color(secondary-light));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0 1rem;
+
+  p {
+    font-weight: 300;
+    color: #fff;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+  }
+}
+
+///////////////////////////
+// TOP BOTTOM SPECIFIC STYLES
+//////////////////////////
+
+.topBottom {
+  // display: flex;
+  flex-direction: column;
+  border: 1px solid color(gridLines);
+  background-color: #fff;
+  width: 100%;
+
+  @include respond(phone) { // width < 600?
+    // width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
+// Default styles for topBottom articles
+.top {
+  // top styles
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+
+  p {
+    margin:  0 0 2rem 0;
+  }
+}
+
+
+// CUlture photo sections
+.culture {
+  // top styles
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+// Top style for specifically styled images
+.image {
+  height: 200px;
+}
+
+// Default fault style for topBottom articles
+.bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    align-self: center;
+  }
+
+  p {
+    margin-top: 0;
+  }
+
+  p:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+// Used for the bottom part of the grad review article
+.gradReview {
+  margin-top: 1rem;
+
+  p {
+    color: #747474;
+  }
+}
+
+// Styles for team members
+.teamMember {
+  p:nth-of-type(1) {
+    margin-top: 1rem;
+  }
+
+  p {
+    text-align: center;
+    margin-top: 0px;
+  }
+}
+
+// Used for some projects and resources topBottom articles
+.paddingSmall {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 2.5rem;
+
+  .title {
+    text-align: center;
+  }
+
+  p:first-of-type {
+    text-align: center;
+  }
+
+  dl {
+    text-align: center;
+    color: color(darkGrayText2);
+  }
+
+  button {
+    align-self: center;
+  }
+
+  p {
+    margin-top: 1rem;
+  }
+
+  p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  a {
+    margin-top: 1rem;
+    align-self: center;
+  }
+}
+
+.company {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 1rem;
+}
+
+// Styled used to cohort and schedule articles padding on the left side
+.cohortAndSchedule {
+  padding: 1rem 0;
+  // padding-right: 2rem;
+
+  @include respond(tab-port) {
+    padding: 1rem;
+  }
+}
+
+// Used for csprep instructor highlight to keep bottom content from being too wide
+.maxWidthAndCenter {
+  max-width: 81rem;
+  margin: auto;
+  text-align: center;
+}
+
+//////////////////////
+// UTILITY CLASSES
+/////////////////////
+
+.alignLeft {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  p {
+    span {
+      font-size: 1.6rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: color(darkGrayText);
+    }
+  }
+
+  @include respond(tab-land) {
+    justify-content: center; 
+  }
+}
+
+// Aligns items in the center used for the articles like the free coding resources for admissions
+.alignCenter {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  p:first-of-type {
+    margin-top: 0;
+    text-align: center;
+  }
+
+  dl {
+    margin-top: 1rem;
+    margin-bottom: 0;
+    text-align: center;
+    color: color(darkGrayText2);
+  }
+
+  button {
+
+    display: block;
+    margin: 0 auto;
+  }
+
+  p {
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  a {
+    margin-top: 1rem;
+    align-self: center;
+  }
+}
+
+.eventButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include respond(phone) { // width < 600?
+    button {
+      margin-top: 2rem;
+    }
+  }
+}
+
+///////////////////////////
+// Spans 
+// classes used to define how much space content uses
+//////////////////////////
+.span1 {
+  grid-column: span 1;
+}
+
+.span2 {
+  grid-column: span 2;
+}
+
+.span3 {
+  grid-column: span 3;
+}
+
+.span4 {
+  grid-column: span 4;
+}
+
+.span5 {
+  grid-column: span 5;
+}
+
+.span6 {
+  grid-column: span 6;
+}
+
+.span7 {
+  grid-column: span 7;
+}
+
+.span8 {
+  grid-column: span 8;
+}
+
+.span9 {
+  grid-column: span 9;
+}
+
+.span10 {
+  grid-column: span 10;
+}
+
+.span11 {
+  grid-column: span 11;
+}
+
+.span12 {
+  grid-column: span 12;
+}
+
+//Overlay used for when hovering over events
+.overlay {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(color(primary-dark), 0);
+  transition: .3s all ease;
+  
+  button {
+    transition: .3s all ease;
+    opacity: 0;
+  }
+}
+
+///////////////////////
+// SPACING
+///////////////////////
+
+.paddingLarge {
+  padding: $padding-3 $padding-10;
+
+  article {
+    width: 100%;
+  }
+
+  @include respond(tab-land) {
+    padding: 2rem 8rem;
+  }
+
+  @include respond(phone) {
+    padding: 2rem;
+  }
+  
+}
+
+.padding2 {
+  padding: $padding-2;
+}
+
+.topSmPadd {
+  @include respond(phone) { // width < 600?
+    padding-top: 1rem;
+  }
+}
+
+.bottomSmPadd {
+  @include respond(phone) { // width < 600?
+    padding-bottom: 1rem;
+  }
+}
+
+
+///////////////////////
+// Background/Border
+///////////////////////
+
+.noBackground {
+  background: transparent;
+}
+
+.removeBorder {
+  border: none;
+}
+
+.addBorder {
+  border: 1px solid color(gridLines);
+}

@@ -1,0 +1,71 @@
+@import "../../../shared/utils/all";
+@import "../../../shared/forms/validation";
+
+.group {
+  display: block;
+  position: relative;
+  float: left;
+  width: $input-width;
+  margin-bottom: 1rem;
+
+  label {
+    display: block;
+  }
+
+  input[type=radio] {
+    position: absolute;
+    visibility: hidden;
+    margin-bottom: 0; // &:checked ~ .check {
+    //   border: 5px solid #0DFF92;
+    // }
+    &:checked~.check::before {
+      background: color(primary-dark);
+    } // &:checked ~ label{
+    //   color: #0DFF92;
+    // }
+  }
+
+  .check {
+    display: block;
+    position: absolute;
+    border: 2px solid color(gridLines);
+    border-radius: 100%;
+    height: 2rem;
+    width: 2rem;
+    top: 0rem;
+    left: 0rem;
+    z-index: 5;
+    transition: border .1s linear;
+    -webkit-transition: border .1s linear;
+
+    &::before {
+      display: block;
+      position: absolute;
+      content: '';
+      border-radius: 100%;
+      height: 1.2rem;
+      width: 1.2rem;
+      top: 2px;
+      left: 2px;
+      margin: auto;
+      transition: background 0.1s linear;
+      -webkit-transition: background 0.1s linear;
+    }
+  }
+}
+
+.container {
+  margin-top: 0.5rem;
+}
+
+.item {
+  display: block;
+  position: relative;
+  font-weight: 600;
+  font-size: 1.5rem;
+  padding: 0 0 0 3rem;
+  height: 30px;
+  z-index: 9;
+  cursor: pointer;
+  -webkit-transition: all 0.1s linear;
+}

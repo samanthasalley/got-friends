@@ -1,0 +1,67 @@
+@import '../../shared/utils/all';
+
+div .collapse {
+  margin-bottom: 2rem;
+
+  h3 {
+    margin: 0;
+    font-size: 2rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  dl {
+    color: color(csxGray);
+  }
+}
+
+.details {
+  overflow: hidden;
+  transition: .5s max-height ease;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.caret {
+  height: 100%;;
+  width: 2rem;
+  margin-right: 2rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.caretRight {
+  color: color(secondary-light);
+  border-top: 1rem solid transparent;
+  border-bottom: 1rem solid transparent;
+  border-left: 1rem dashed;
+  margin-right: 5px;
+  margin-top: -4px;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+
+.caretDown {
+  color: color(secondary-light);
+  border-top: 1rem solid transparent;
+  border-bottom: 1rem solid transparent;
+  border-left: 1rem dashed;
+  margin-right: 5px;
+  margin-top: -4px;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 5px;
+  vertical-align: middle;
+  transform: rotate(90deg);
+}

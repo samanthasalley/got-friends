@@ -1,0 +1,63 @@
+@import "../../shared/utils/all";
+
+.message {
+  position: fixed;
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  width: 100%;
+  z-index: 999999;
+  font-size: 1.7rem;
+  top: 0;
+  left: 0;
+  text-align: center;
+  margin-top: -50px;
+  opacity: 0;
+  visibility: hidden;
+  transition: margin-top 0.3s linear, opacity 0.3s linear;
+  a,
+  a:hover,
+  a:focus {
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.success {
+  color: #3c763d;
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  visibility: visible;
+  margin-top: 0px;
+  opacity: 1;
+}
+
+.error {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  visibility: visible;
+  margin-top: 0px;
+  opacity: 1;
+}
+
+.info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  visibility: visible;
+  margin-top: 0px;
+  opacity: 1;
+}
+
+.dismissed {
+  margin-top: -50px;
+  opacity: 0;
+}
+
+.close {
+  position: relative;
+  float: right;
+  padding-right: 20px;
+  color: inherit;
+}

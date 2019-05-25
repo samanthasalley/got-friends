@@ -1,0 +1,19 @@
+@import "../../../shared/utils/all";
+@import "../../../shared/forms/validation";
+
+.group {
+  width: 100%;
+  
+  label {
+    display: block;
+  }
+
+  textarea {
+    font-size: 1.3rem;
+    color: color(darkGray);
+    padding: 1rem;
+    height: 20rem;
+    margin-top: 1rem;
+    margin-bottom: 0;
+  }
+}

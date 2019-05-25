@@ -1,0 +1,16 @@
+@import "../../../shared/utils/all";
+@import "../../../shared/forms/fields";
+@import "../../../shared/forms/validation";
+
+.group {
+  width: $input-width;
+  
+  label {
+    display: block;
+  }
+
+  input {
+    margin-top: 0.5rem;
+    margin-bottom: 0;
+  }
+}

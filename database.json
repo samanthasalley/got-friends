@@ -1,0 +1,35 @@
+{
+  "dev": {
+    "driver": "pg",
+    "host": "localhost",
+    "user": "gotcha",
+    "password": "gotme",
+    "database": "gotfriends"
+  },
+
+  "postgres-db": {
+    "driver": "pg",
+    "host": "postgres-db",
+    "user": "gotcha",
+    "password": "gotme",
+    "database": "gotfriends"
+  },
+
+  "postgres-db-test": {
+    "driver": "pg",
+    "host": "postgres-db-test",
+    "user": "gotcha",
+    "password": "gotme",
+    "database": "gotfriends"
+  },
+
+  "rds": {
+    "driver": "pg",
+    "host": {"ENV": "RDS_HOSTNAME"},
+    "user": {"ENV": "RDS_USERNAME"},
+    "password": {"ENV": "RDS_PASSWORD"},
+    "database": {"ENV": "RDS_DB_NAME"}
+  },
+
+  "sql-file" : true
+}

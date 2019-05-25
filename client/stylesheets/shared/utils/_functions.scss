@@ -1,0 +1,12 @@
+// this enables us to pull color values out of
+// the $colors map in _variables like so:
+// background-color: color(csBlue);
+@function color($key) {
+  @if map-has-key($colors, $key) {
+    @return map-get($colors, $key);
+  }
+
+  // warnings show up in the build output
+  @warn "Unknown `#{$key}` in $colors.";
+  @return null;
+}

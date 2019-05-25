@@ -1,0 +1,29 @@
+%validation {
+  padding-right: 1.5rem;
+  text-align: right;
+  font-size: 1.4rem;
+  width: 100%;
+  height: 2rem;
+}
+
+.error {
+  @extend %validation;
+  color: red;
+}
+
+.warning {
+  @extend %validation;
+  color: orange;
+}
+
+.bottomMargin {
+  margin-bottom: 2rem;
+}
+
+.errorBorder {
+  border-color: red !important;
+}
+
+.warningBorder {
+  border-color: orange !important;
+}

@@ -1,0 +1,15 @@
+@import '../../shared/utils/all';
+
+.app {
+  height: 100vh;
+  display: grid;
+  // grid-template-rows: 0 70px 1fr 200px;
+
+  main {
+    // height: 100%;
+  }
+}
+
+.spacer {
+  height: $navbar-height;
+}
