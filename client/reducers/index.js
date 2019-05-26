@@ -14,8 +14,7 @@
 import { combineReducers } from 'redux';
 // Reducers
 import { reducer as formReducer } from 'redux-form';
-import exampleReducer from './exampleReducer';
-import flashReducer from './flashReducer';
+import gotReducer from './gotReducer';
 import modalReducer from './modalReducer';
 // Action types (for redux-form plugin)
 // import { CLEAR_EXAMPLE_FORM } from '../actions/actionTypes';
@@ -40,8 +39,7 @@ const reducers = combineReducers({
   /* if no redux-form plugins are needed, use this default reducer */
   form: formReducer,
   // custom reducers
-  example: exampleReducer,
-  flash: flashReducer,
+  data: gotReducer,
   modal: modalReducer,
 });
 

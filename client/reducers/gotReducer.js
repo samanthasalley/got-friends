@@ -1,10 +1,10 @@
 /**
  * ************************************
  *
- * @module  exampleReducer
- * @author  boilerplate
- * @date    boilerplate
- * @description Template reducer can be used as basis for new reducers
+ * @module  gotReducer
+ * @author  samanthasalley
+ * @date    2019-05-25
+ * @description Reducer for storing GoT data
  *
  * ************************************
  */
@@ -13,21 +13,24 @@ import update from 'immutability-helper';
 import actionTypes from '../actions/actionTypes';
 
 const initialState = {
-  someData: null,
-  flash: {},
+  fetchedData: null,
+  houses: null,
+  regions: null,
+  seasons: null,
+  characters: null, 
 };
 
-const userReducer = (state = initialState, action) => {
+const gotReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.SET_EXAMPLE_DATA:
+    case actionTypes.SET_GOT_DATA:
       return Object.assign({}, state, action.payload);
-    case actionTypes.UPDATE_EXAMPLE_DATA:
+    case actionTypes.UPDATE_GOT_DATA:
       return update(state, { $merge: action.payload });
-    case actionTypes.RESET_EXAMPLE_DATA:
+    case actionTypes.RESET_GOT_DATA:
       return initialState;
     default:
       return state;
   }
 };
 
-export default userReducer;
+export default gotReducer;
