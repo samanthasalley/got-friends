@@ -17,13 +17,11 @@ const gotController = require('../controllers/gotController');
 router.get('/',
   gotController.fetchCharacters,
   gotController.fetchHouses,
-  gotController.splitCharactersBySeason,
-  gotController.sortByRegion,
+  gotController.populateCharacterAllegiances,
   (req, res) => res.status(200).json({
     success: true,
     data: {
       houses: res.locals.houses,
-      seasons: res.locals.seasons || {},
       characters: res.locals.characters,
       regions: res.locals.regions,
     },
