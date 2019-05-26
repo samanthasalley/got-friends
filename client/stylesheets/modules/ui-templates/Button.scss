@@ -85,7 +85,7 @@
 
 .dark {
   @extend %btn;
-  background: color(csxGray);
+  background: color(text);
   color: white;
 
   &:hover {
