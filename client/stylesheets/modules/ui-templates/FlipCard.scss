@@ -23,7 +23,7 @@
     transition: all 1.2s ease;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
-    border: 1px solid color('gridLines');
+    border: 1px solid color('text');
 
     @include respond(phone) { // width < 600?
       display: flex;
@@ -71,7 +71,7 @@
       justify-content: center;
       align-items: center;
       background-color: white;
-      border: 1px solid color('gridLines');
+      border: 1px solid color('text');
 
       @include respond(phone) { // width < 600?
         display: flex;
@@ -101,7 +101,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      background-color: color('primary-dark');
+      background-color: color('text');
       transform: rotateY(180deg);
       color: #fff;
       animation-name: changeDisplay;
@@ -149,7 +149,7 @@
   display: none;
   font-size: 2rem;
   font-weight: bold;
-  color: color(secondary-light);
+  color: color(text);
 
   @include respond(phone) { // width < 600?
     display: inline-block;

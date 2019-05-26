@@ -27,7 +27,6 @@ import Home from './components/pages/Home';
 // utils
 import ScrollToTop from './components/utils/ScrollToTop';
 // other containers / components
-import Navbar from './components/navigation/Navbar';
 import Footer from './components/Footer';
 
 // styles / assets
@@ -36,7 +35,6 @@ import styles from './stylesheets/modules/App.scss';
 // eslint-disable-next-line no-unused-vars
 const App = props => (
   <div className={styles.app}>
-    <Navbar />
     <Route component={ScrollToTop} />
     <Switch>
       <Route exact path="/" component={Home} />

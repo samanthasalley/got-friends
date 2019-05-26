@@ -19,7 +19,7 @@
     //   border: 5px solid #0DFF92;
     // }
     &:checked~.check::before {
-      background: color(primary-dark);
+      background: color(text);
     } // &:checked ~ label{
     //   color: #0DFF92;
     // }
@@ -28,7 +28,7 @@
   .check {
     display: block;
     position: absolute;
-    border: 2px solid color(gridLines);
+    border: 2px solid color(text);
     border-radius: 100%;
     height: 2rem;
     width: 2rem;

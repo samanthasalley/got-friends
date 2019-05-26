@@ -19,8 +19,8 @@
   @include button;
   background: linear-gradient(
     to top,
-    color(secondary-dark),
-    color(secondary-light)
+    color(text),
+    color(text)
   );
   color: #fff;
 
@@ -32,8 +32,8 @@
   &:hover {
     background: linear-gradient(
       to top,
-      lighten(color(secondary-dark), 5%),
-      lighten(color(secondary-light), 5%)
+      lighten(color(text), 5%),
+      lighten(color(text), 5%)
     );
   }
 
@@ -42,8 +42,8 @@
     @include button;
     background: linear-gradient(
     to top,
-    color(secondary-dark),
-    color(secondary-light)
+    color(text),
+    color(text)
     );
     width: $input-width;
     height: $input-height;
@@ -60,8 +60,8 @@
     @include button;
     background: linear-gradient(
     to top,
-    color(secondary-dark),
-    color(secondary-light)
+    color(text),
+    color(text)
     );
     width: 26rem;
     height: $input-height;
@@ -71,8 +71,8 @@
     &:hover {
       background: linear-gradient(
         to top,
-        lighten(color(secondary-dark), 5%),
-        lighten(color(secondary-light), 5%)
+        lighten(color(text), 5%),
+        lighten(color(text), 5%)
       );
     }
 
@@ -97,18 +97,18 @@
   padding: 1rem 2.5rem;
   border: none;
   background-color: transparent;
-  color: color(csxDarkGray);
+  color: color(text);
   font-size: 1.2rem;
   font-weight: 700;
 
   &:hover {
     cursor: pointer;
-    background: color(csxDarkGray);
+    background: color(text);
     color: #fff;
   }
 
   &:not(:last-child) {
-    border-right: 1px solid color(csxLightGray);
+    border-right: 1px solid color(text);
   }
 }
 
@@ -118,19 +118,19 @@
   width: 25.5rem;
   border: none;
   background-color: transparent;
-  color: color(csxDarkGray);
+  color: color(text);
   font-size: 1.4rem;
   font-weight: 700;
   transition: all 0.1s ease;
 
   &:hover {
     cursor: pointer;
-    background: color(csxDarkGray);
+    background: color(text);
     color: #fff;
   }
 
   &:not(:last-child) {
-    border-right: 2px solid color(csxLightGray);
+    border-right: 2px solid color(text);
   }
 }
 
@@ -139,14 +139,14 @@
   height: 5rem;
   width: 25.5rem;
   border: none;
-  background: color(csxDarkGray);
+  background: color(text);
   color: #fff;
   font-size: 1.4rem;
   font-weight: 700;
   transition: all 0.1s ease;
 
   &:focus {
-    background: color(csxDarkGray);
+    background: color(text);
     color: #fff;
   }
   
@@ -162,7 +162,7 @@
     border-top-width: 1rem;
     border-left: 1rem solid transparent;
     border-right: 1rem solid transparent;
-    border-top-color: color(csxDarkGray);
+    border-top-color: color(text);
   }
   
   &:hover {
@@ -172,29 +172,29 @@
 
 // Styles for buttons with a white border and transparent background
 .transparent {
-  @include transp-button(color(csxLightGray));
+  @include transp-button(color(text));
 
   &:hover {
     cursor: pointer;
-    background-color: color(csxLightGray);
-    color: color(primary-dark);
+    background-color: color(text);
+    color: color(text);
   }
 }
 
 // Styles for  buttons with a green border and transparent background
 .transparentGreen {
-  @include transp-button(color(secondary-light));
+  @include transp-button(color(text));
 
   &:hover {
-    // background: linear-gradient(to top, lighten(color(secondary-dark), 5%), lighten(color(secondary-light), 5%));
+    // background: linear-gradient(to top, lighten(color(text), 5%), lighten(color(text), 5%));
     cursor: pointer;
-    background-color: color(secondary-light);
+    background-color: color(text);
     color: #fff;
   }
 
   &:active {
-    background-color: darken(color(secondary-light), 8%);
-    border: 4px solid darken(color(secondary-light), 8%);
+    background-color: darken(color(text), 8%);
+    border: 4px solid darken(color(text), 8%);
   }
 }
 
@@ -204,23 +204,23 @@
   height: 3rem;
   border-radius: $primary-radius;
   font-size: 1.2rem;
-  border: 4px solid color(secondary-light);
+  border: 4px solid color(text);
   background: transparent;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: color(secondary-light);
+  color: color(text);
   transition: 0.1s all ease;
 
   &:hover {
-    // background: linear-gradient(to top, lighten(color(secondary-dark), 5%), lighten(color(secondary-light), 5%));
+    // background: linear-gradient(to top, lighten(color(text), 5%), lighten(color(text), 5%));
     cursor: pointer;
-    background-color: color(secondary-light);
+    background-color: color(text);
     color: #fff;
   }
 
   &:active {
-    background-color: darken(color(secondary-light), 8%);
-    border: 4px solid darken(color(secondary-light), 8%);
+    background-color: darken(color(text), 8%);
+    border: 4px solid darken(color(text), 8%);
   }
 }
 
@@ -242,7 +242,7 @@
   padding: 5px 1rem;
   text-decoration: none;
   // color: #7DD0BE;
-  color: color(secondary-light);
+  color: color(text);
   font-weight: 700;
 
   &:hover {
@@ -255,7 +255,7 @@
   background: transparent;
   font-size: 1.5rem;
   border: none;
-  border-bottom: 2px solid color(grayDark);
+  border-bottom: 2px solid color(text);
   text-transform: uppercase;
   padding: 5px 1rem;
   transition: .3s all ease;
@@ -265,7 +265,7 @@
     content: '';
     height: 0%;
     width: 100%;
-    background-color: color(grayDark);
+    background-color: color(text);
     position: absolute;
     bottom: 0;
     left: 0;
@@ -285,7 +285,7 @@
   a {
     color: #fff;
     font-weight: 500;
-    color: color(grayDark);
+    color: color(text);
   }
 }
 
@@ -299,7 +299,7 @@
   text-align: left;
   background-color: #fff;
   font-size: 1.5rem;
-  color: color(grayDark);
+  color: color(text);
 
   &:hover {
     cursor: pointer;
@@ -318,7 +318,7 @@
   text-align: left;
   background-color: #fff;
   font-size: 1.5rem;
-  color: color(grayDark);
+  color: color(text);
 
   &:hover {
     cursor: pointer;

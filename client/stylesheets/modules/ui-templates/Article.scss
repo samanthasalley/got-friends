@@ -11,7 +11,7 @@
 
 %article {
   display: grid;
-  // border: 1px solid color(gridLines);
+  // border: 1px solid color(text);
   // padding: 1rem;
 }
 
@@ -31,7 +31,7 @@
   }
 
   &:hover .left .overlay{
-    background-color: rgba(color(primary-dark), 0.7);
+    background-color: rgba(color(text), 0.7);
   }
 
   &:hover .left .overlay button{
@@ -91,7 +91,7 @@
 
 // Styles for events with a blue left side
 .eventBlue {
-  background: linear-gradient(to top, color(primary-dark), color(primary));
+  background: linear-gradient(to top, color(text), color(primary));
   display: flex;
   justify-content: center;
   align-items: center;
@@ -112,7 +112,7 @@
 
 // Styles for events with a green left side
 .eventGreen {
-  background: linear-gradient(to top, color(secondary-dark), color(secondary-light));
+  background: linear-gradient(to top, color(text), color(text));
   display: flex;
   justify-content: center;
   align-items: center;
@@ -138,7 +138,7 @@
 .topBottom {
   // display: flex;
   flex-direction: column;
-  border: 1px solid color(gridLines);
+  border: 1px solid color(text);
   background-color: #fff;
   width: 100%;
 
@@ -242,7 +242,7 @@
 
   dl {
     text-align: center;
-    color: color(grayDark);
+    color: color(text);
   }
 
   button {
@@ -300,7 +300,7 @@
       font-size: 1.6rem;
       font-weight: 600;
       text-transform: uppercase;
-      color: color(grayDark);
+      color: color(text);
     }
   }
 
@@ -331,7 +331,7 @@
     margin-top: 1rem;
     margin-bottom: 0;
     text-align: center;
-    color: color(grayDark);
+    color: color(text);
   }
 
   button {
@@ -427,7 +427,7 @@
   align-items: center;
   height: 100%;
   width: 100%;
-  background-color: rgba(color(primary-dark), 0);
+  background-color: rgba(color(text), 0);
   transition: .3s all ease;
   
   button {
@@ -487,5 +487,5 @@
 }
 
 .addBorder {
-  border: 1px solid color(gridLines);
+  border: 1px solid color(text);
 }

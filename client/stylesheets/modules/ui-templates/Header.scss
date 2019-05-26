@@ -5,7 +5,7 @@ h1 {
   font-size: 3.5rem;
   font-weight: 700;
   line-height: 1.3;
-  color: color(grayDark);
+  color: color(text);
 }
 
 h2 {
@@ -14,7 +14,7 @@ h2 {
   font-size: 3rem;
   font-weight: 300;
   line-height: 1.3;
-  color: color(grayDark);
+  color: color(text);
 
   // must explicitly set a tags to override default a styling
   a {
@@ -26,12 +26,12 @@ h3 {
   font-size: 1.8rem;
   font-weight: 700;
   line-height: 1.6;
-  color: color(grayDark);
+  color: color(text);
 }
 
 .headline3 {
   font-size: 1.6rem;
-  color: color(grayDark);
+  color: color(text);
 }
 
 
@@ -39,7 +39,7 @@ h3 {
 //   font-size: 1.8rem;
 //   font-weight: 700;
 //   line-height: 1.6;
-//   color: color(grayDark);
+//   color: color(text);
 // }
 
 // size 15 all caps. For example, used on the software engineer names
@@ -53,14 +53,14 @@ h5 {
   font-size: 1.8rem;
   font-weight: 700;
   line-height: 1.6;
-  color: color(grayDark);
+  color: color(text);
 }
 
 // h3 {
 //   font-size: 1.5rem;
 //   line-height: 1.6;
 //   // text-transform: uppercase;
-//   color: color(grayDark);
+//   color: color(text);
 // }
 
 .h3-blue {

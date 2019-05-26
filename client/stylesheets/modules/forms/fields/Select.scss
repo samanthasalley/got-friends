@@ -27,7 +27,7 @@
     background-color: #fff;
     border: 2px solid color(grayLight);
     border-radius: $primary-radius;
-    color: color(grayDark);
+    color: color(text);
     outline: none;
     appearance: none;
     -webkit-appearance: none;
@@ -36,7 +36,7 @@
 
     &:hover {
       cursor: pointer;
-      border: 2px solid color(secondary-light);
+      border: 2px solid color(text);
     }
   }
 

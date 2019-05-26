@@ -29,7 +29,7 @@
     padding: 1.5rem 0;
     
     &:not(:last-child) {
-      border-bottom: 1px solid color(gridLines);
+      border-bottom: 1px solid color(text);
     }
   }
 }
@@ -308,7 +308,7 @@
 
   > article:nth-of-type(1) {
     color: #fff;
-    background-color: color(grayDark);
+    background-color: color(text);
 
     p, a {
       color: #fff;
@@ -316,17 +316,17 @@
   }
 
   > article:nth-of-type(2) {
-    color: color(grayDark);
-    background-color: color(secondary-light);
+    color: color(text);
+    background-color: color(text);
 
     p, a {
-      color: color(grayDark);
+      color: color(text);
     }
   }
 
   > article:nth-of-type(3) {
     color: #fff;
-    background-color: color(primary-dark);
+    background-color: color(text);
 
     p, a {
       color: #fff;
@@ -334,11 +334,11 @@
   }
 
   > article:nth-of-type(4) {
-    color: color(grayDark);
+    color: color(text);
     background-color: #DFE6EC;
 
     p, a {
-      color: color(grayDark);
+      color: color(text);
     }
   }
 
@@ -369,7 +369,7 @@
 
   > article:nth-of-type(4) {
     color: #fff;
-    background-color: color(grayDark);
+    background-color: color(text);
 
     p, a {
       color: #fff;
@@ -377,17 +377,17 @@
   }
 
   > article:nth-of-type(3) {
-    color: color(grayDark);
-    background-color: color(secondary-light);
+    color: color(text);
+    background-color: color(text);
 
     p, a {
-      color: color(grayDark);
+      color: color(text);
     }
   }
 
   > article:nth-of-type(2) {
     color: #fff;
-    background-color: color(primary-dark);
+    background-color: color(text);
 
     p, a {
       color: #fff;
@@ -395,11 +395,11 @@
   }
 
   > article:nth-of-type(1) {
-    color: color(grayDark);
+    color: color(text);
     background-color: #DFE6EC;
 
     p, a {
-      color: color(grayDark);
+      color: color(text);
     }
   }
 

@@ -140,7 +140,7 @@
     font-size: 1.6rem;
     font-weight: bold;
     text-align: center;
-    color: color(grayDark);
+    color: color(text);
 
     @include respond(phone) { // width < 600?
       margin-top: 0;
@@ -330,7 +330,7 @@
 
   figcaption {
     font-size: 1.5rem;
-    color: color(secondary-light);
+    color: color(text);
   }
 }
 
@@ -345,7 +345,7 @@
 
   figcaption {
     font-size: 1.5rem;
-    color: color(secondary-light);
+    color: color(text);
   }
 }
 
@@ -367,7 +367,7 @@
   figcaption {
     margin-top: -2rem;
     font-size: 1.8rem;
-    color: color(primary-dark);
+    color: color(text);
   }
 }
 

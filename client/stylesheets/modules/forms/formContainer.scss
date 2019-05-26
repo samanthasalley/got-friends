@@ -13,7 +13,7 @@
 
   h5 {
     font-size: 1.5rem;
-    color: color(grayDark);
+    color: color(text);
   }
 
   // form {
@@ -22,7 +22,7 @@
 
   label {
     font-size: 1.5rem;
-    color: color(grayDark);
+    color: color(text);
     font-weight: 600;
   }
 
@@ -67,7 +67,7 @@ input {
   }
 
   &:focus {
-    border: 2px solid color(secondary-light);
+    border: 2px solid color(text);
   }
 }
 
@@ -91,7 +91,7 @@ input {
 
   p {
     font-size: 1.1rem;
-    color: color(grayDark);
+    color: color(text);
     text-align: center;
   }
 }
