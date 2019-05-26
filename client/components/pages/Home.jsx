@@ -16,6 +16,7 @@ import * as gotActions from '../../actions/creators/gotActions';
 import PropTypes from 'prop-types';
 // components
 import Button from '../ui-templates/Button';
+import RenderBubble from '../graphs/RenderBubble';
 // styles / assets
 import styles from '../../stylesheets/modules/PageStyles.scss';
 
@@ -31,96 +32,33 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      regions: {},
-      houses: {},
-      characters: {},
-    };
-  }
 
   async componentDidMount() {
-    if (!this.props.regions) {
-      const { success, data: { regions, houses, characters } } = await this.props.fetchData();
-      if (success) return this.setState({
-        regions,
-        houses,
-        characters,
+    if (!this.props.regions) this.props.fetchData();
+  }
+
+  generateWesterosData(regions, characters) {
+    return Object.keys(regions).reduce((formatted, region) => {
+      const regionObject = { name: region, color: 'hsl(163, 70%, 50%)', children: [] };
+      Object.keys(regions[region].houses).forEach(houseName => {
+        const { familyName, houseIds, swornMembers } = regions[region].houses[houseName];
+        const houseObject = { name: houseName, color: 'hsl(66, 70%, 50%)', children: [] };
+        Object.keys(swornMembers)
+          .filter(charId => characters.byId[charId] && characters.byId[charId].name)
+          .forEach(charId => {
+            const { name: charName } = characters.byId[charId];
+            const charObject = { name: charName, color: 'hsl(300, 70%, 50%)', loc: 147126 };
+            houseObject.children.push(charObject);
+          });
+        regionObject.children.push(houseObject);
       });
-    }
-  }
-
-  clickedRegion(region) {
-    const regions = { ...this.state.regions };
-    regions[region].clicked = !regions[region].clicked;
-    Object.keys(regions[region].houses).forEach(houseName => {
-      regions[region].houses[houseName].clicked = false;
-    });
-    return this.setState({ regions });
-  }
-
-  clickedHouse(region, houseName) {
-    const regions = { ...this.state.regions };
-    regions[region].houses[houseName].clicked = !regions[region].houses[houseName].clicked;
-    return this.setState({ regions });
-  }
-
-  generateRegionButton(region, id) {
-    return (
-      <Button key={`region-${id}`}
-        theme="blue"
-        handleClick={() => this.clickedRegion(region)}>
-        {region}
-      </Button>
-    )
-  }
-
-  generateHouseButton(region, houseName, id) {
-    return (
-      <Button key={`house-${id}`}
-        theme="blue"
-        handleClick={() => this.clickedHouse(region, houseName)}>
-        {houseName}
-      </Button>
-    )
-  }
-
-  generateCharacterData(charIds) {
-    return charIds.map(id => {
-      const char = this.state.characters.byId[id];
-      if (!char || !char.name) return null;
-      return (<li key={`character-${id}`}>{char.name}</li>);
-    }).filter(item => item);
-  };
-
-  generateHouseData(region, houseName, id) {
-    const HouseButton = this.generateHouseButton(region, houseName, id);
-    if (this.state.regions[region].houses[houseName].clicked) {
-      const { familyName, houseIds, swornMembers } = this.state.regions[region].houses[houseName];
-      const SwornMembers = this.generateCharacterData(Object.keys(swornMembers));
-      return (
-        <div key={`house-data-${id}`}>
-          {HouseButton}
-          {SwornMembers.length
-            ? <div>
-              <h3>Sworn Members</h3>
-              <ul>
-                {SwornMembers}
-              </ul>
-            </div>
-            : null
-          }
-        </div>
-      );
-    }
-    else return HouseButton;
+      formatted.children.push(regionObject);
+      return formatted;
+    }, { name: 'Westeros', color: 'hsl(67, 70%, 50%)', children: [] })
   }
 
   render() {
-    const { fetchedData } = this.props;
-    const { regions, houses, characters } = this.state;
+    const { fetchedData, regions, houses, characters } = this.props;
 
     if (!fetchedData) return (
       <div>Loading...</div>
@@ -130,26 +68,11 @@ class Home extends Component {
       <div>No regions</div>
     );
 
-    const DataToRender = Object.keys(regions).map((region, i) => {
-      const RegionButton = this.generateRegionButton(region, i);
-      if (regions[region].clicked) {
-        const HouseData = Object.keys(regions[region].houses)
-          .map((houseName, hidx) => this.generateHouseData(region, houseName, hidx));
-        return (
-          <div key={`region-container-${i}`}>
-            {RegionButton}
-            <div>
-              {HouseData}
-            </div>
-          </div>
-        )
-      }
-      else return (<div key={`region-container-${i}`}>{RegionButton}</div>);
-    })
-
     return (
       <main className={[styles.centerVertical, styles.centerHorizontal].join(' ')}>
-        {DataToRender}
+        <div style={{ height: '500px', width: '900px' }}>
+          <RenderBubble root={this.generateWesterosData(regions, characters)} />
+        </div>
       </main>
     );
   }
