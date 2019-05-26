@@ -9,6 +9,7 @@
  * ************************************
  */
 import fetch from 'isomorphic-fetch';
+import moment from 'moment';
 import actionTypes from '../actionTypes';
 import { handleReduxThunkError } from '../../utils/errorUtil';
 
@@ -33,7 +34,7 @@ export const resetGOTData = data => ({
 // Thunk middleware will turn async actions into actions
 export const fetchData = () => dispatch => {
   // This works on webpack dev:hot since proxy is specified in the config
-  fetch('/got/', {
+  return fetch('/got/', {
     method: 'GET',
     credentials: 'include', // Include cookies
   })
@@ -44,7 +45,7 @@ export const fetchData = () => dispatch => {
         handleReduxThunkError({ location: 'gotActions.fetchData', err });
         return { success, err };
       }
-      dispatch(updateGOTData(data));
+      dispatch(updateGOTData({...data, fetchedData: moment() }));
       return { success, data };
     })
     .catch(err => {
