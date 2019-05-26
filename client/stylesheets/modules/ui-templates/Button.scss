@@ -255,7 +255,7 @@
   background: transparent;
   font-size: 1.5rem;
   border: none;
-  border-bottom: 2px solid color(grayDarkText);
+  border-bottom: 2px solid color(grayDark);
   text-transform: uppercase;
   padding: 5px 1rem;
   transition: .3s all ease;
@@ -265,7 +265,7 @@
     content: '';
     height: 0%;
     width: 100%;
-    background-color: color(grayDarkText);
+    background-color: color(grayDark);
     position: absolute;
     bottom: 0;
     left: 0;
@@ -285,7 +285,7 @@
   a {
     color: #fff;
     font-weight: 500;
-    color: color(grayDarkText);
+    color: color(grayDark);
   }
 }
 
