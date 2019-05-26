@@ -93,18 +93,18 @@ gotController.sortByRegion = (req, res, next) => {
     const houseName = `${splitName[0]} ${splitName[1]}`;
     res.locals.houses.byId[houseId].houseName = houseName;
     if (region && houseName) {
-      if (!regions[region]) regions[region] = {};
-      if (!regions[region][houseName]) regions[region][houseName] = { familyName: splitName[1], houseIds: {}, swornMembers: {}, familyMembers: {}, allies: {} };
-      regions[region][houseName].houseIds[houseId] = true;
+      if (!regions[region]) regions[region] = { houses: {} };
+      if (!regions[region].houses[houseName]) regions[region].houses[houseName] = { familyName: splitName[1], houseIds: {}, swornMembers: {}, familyMembers: {}, allies: {} };
+      regions[region].houses[houseName].houseIds[houseId] = true;
       if (house.swornMembers.length) {
-        regions[region][houseName].swornMembers = house.swornMembers
+        regions[region].houses[houseName].swornMembers = house.swornMembers
           .filter(mem => mem !== '')
           .reduce((mems, curMem) => {
             const splitUrl = curMem.split('/');
             const charId = parseInt(splitUrl[splitUrl.length - 1]);
             mems[charId] = true;
             return mems;
-          }, { ...regions[region][houseName].swornMembers });
+          }, { ...regions[region].houses[houseName].swornMembers });
       }
     }
     return regions;
@@ -122,15 +122,15 @@ gotController.sortByRegion = (req, res, next) => {
           if (lastName
             && house
             && res.locals.regions[house.region]
-            && res.locals.regions[house.region][house.houseName]
-            && res.locals.regions[house.region][house.houseName].familyName === lastName) {
-            res.locals.regions[house.region][house.houseName].familyMembers[charId] = true;
+            && res.locals.regions[house.region].houses[house.houseName]
+            && res.locals.regions[house.region].houses[house.houseName].familyName === lastName) {
+            res.locals.regions[house.region].houses[house.houseName].familyMembers[charId] = true;
           }
-          else if (house 
+          else if (house
             && res.locals.regions[house.region]
-            && res.locals.regions[house.region][house.houseName]
-            && !res.locals.regions[house.region][house.houseName].swornMembers[charId]) {
-            res.locals.regions[house.region][house.houseName].allies[charId] = true;
+            && res.locals.regions[house.region].houses[house.houseName]
+            && !res.locals.regions[house.region].houses[house.houseName].swornMembers[charId]) {
+            res.locals.regions[house.region].houses[house.houseName].allies[charId] = true;
           }
         });
     }
