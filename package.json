@@ -7,7 +7,7 @@
         "dev": "NODE_ENV=development node ./server/server.js",
         "build:dev": "NODE_ENV=development webpack --config ./webpack/dev.config.js",
         "build:prod": "NODE_ENV=production webpack --config ./webpack/prod.config.js",
-        "dev:hot": "NODE_ENV=development-hot nodemon ./server/server.js & NODE_ENV=development webpack-dev-server --config ./webpack/dev.config.js",
+        "dev:hot": "NODE_ENV=development nodemon ./server/server.js & NODE_ENV=development webpack-dev-server --config ./webpack/dev.config.js",
         "test": "NODE_ENV=test jest",
         "test-coverage": "NODE_ENV=test jest --coverage",
         "test-watch": "NODE_ENV=test jest --watch",
