@@ -16,7 +16,7 @@ const bodyParser = require('body-parser');
 const moment = require('moment');
 const pgPool = require('./models/pgdbmodel');
 
-const exampleRouter = require('./routes/exampleRouter');
+const gotRouter = require('./routes/gotRouter');
 
 const app = express();
 
@@ -54,7 +54,7 @@ app.use((req, res, next) => {
 });
 
 // begin routes
-app.use('/example', exampleRouter);
+app.use('/got', gotRouter);
 
 // serve robots.txt file
 app.get('/robots.txt', (req, res) => {
