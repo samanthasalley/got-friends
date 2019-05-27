@@ -10,15 +10,16 @@
  */
 
 // dependencies
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as gotActions from '../../actions/creators/gotActions';
 import PropTypes from 'prop-types';
 // components
-import Button from '../ui-templates/Button';
-import RenderBubble from '../graphs/RenderBubble';
+// import RenderBubble from '../graphs/RenderBubble';
+import GenderBubbles from './GenderBubbles';
 // styles / assets
 import styles from '../../stylesheets/modules/PageStyles.scss';
+import { notDeepEqual } from 'assert';
 
 const mapStateToProps = store => ({
   houses: store.data.houses,
@@ -37,42 +38,47 @@ class Home extends Component {
     if (!this.props.regions) this.props.fetchData();
   }
 
-  generateWesterosData(regions, characters) {
-    return Object.keys(regions).reduce((formatted, region) => {
-      const regionObject = { name: region, color: 'hsl(163, 70%, 50%)', children: [] };
-      Object.keys(regions[region].houses).forEach(houseName => {
-        const { familyName, houseIds, swornMembers } = regions[region].houses[houseName];
-        const houseObject = { name: houseName, color: 'hsl(66, 70%, 50%)', children: [] };
-        Object.keys(swornMembers)
-          .filter(charId => characters.byId[charId] && characters.byId[charId].name)
-          .forEach(charId => {
-            const { name: charName } = characters.byId[charId];
-            const charObject = { name: charName, color: 'hsl(300, 70%, 50%)', loc: 147126 };
-            houseObject.children.push(charObject);
-          });
-        regionObject.children.push(houseObject);
+  generateWesterosData() {
+    const { regions, houses, characters } = this.props;
+    const westerosData = Object.keys(regions).reduce((root, region, ridx) => {
+      const regionObj = { id: region, type: 'region', name: region, color: 'hsl(204, 71%, 41%)', children: [] };
+      Object.keys(regions[region].houses).forEach((houseName, hidx) => {
+        const houseObj = { id: houseName, type: 'house', name: houseName, children: [] };
+        Object.keys(houses[houseName].familyMembers).forEach(char => {
+          const familyObj = { id: char, type: 'char', name: char, color: 'hsl(0, 62%, 45%)', size: 147126 };
+          houseObj.children.push(familyObj);
+        });
+        Object.keys(houses[houseName].swornMembers).forEach(char => {
+          const swornObj = { id: char, type: 'char', name: char, color: 'hsl(308, 34%, 36%)', size: 8000 };
+          houseObj.children.push(swornObj);
+        });
+        regionObj.children.push(houseObj);
       });
-      formatted.children.push(regionObject);
-      return formatted;
-    }, { name: 'Westeros', color: 'hsl(67, 70%, 50%)', children: [] })
+      root.children.push(regionObj);
+      return root;
+    }, { name: 'Westeros', children: [] });
+    return westerosData;
   }
 
   render() {
-    const { fetchedData, regions, houses, characters } = this.props;
+    const { fetchedData, houses, regions, characters } = this.props;
 
     if (!fetchedData) return (
       <div>Loading...</div>
     );
 
-    if (!Object.keys(regions).length) return (
-      <div>No regions</div>
-    );
+    // this.generateWesterosData();
 
+        // <div style={{ height: '700px', width: '1000px' }}>
+        //   <RenderBubble root={this.generateWesterosData()} />
+        // </div>
     return (
       <main className={[styles.centerVertical, styles.centerHorizontal].join(' ')}>
-        <div style={{ height: '500px', width: '900px' }}>
-          <RenderBubble root={this.generateWesterosData(regions, characters)} />
-        </div>
+        <GenderBubbles
+          houses={houses}
+          regions={regions}
+          characters={characters}
+        />
       </main>
     );
   }
