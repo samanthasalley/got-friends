@@ -53,6 +53,7 @@ const concatCharData = (char1, char2) => {
     charId: char1.charId,
     url: char1.url,
     name: char1.name,
+    gender: char1.gender || char2.gender || undefined,
     altIds: char1.altIds ? [...char1.altIds, char2.charId] : [char2.charId],
     familyName: char1.familyName || char2.familyName || undefined,
     allegiances: Object.assign(char1.allegiances, char2.allegiances),
@@ -87,6 +88,7 @@ gotController.fetchCharacters = async (req, res, next) => {
           charId,
           url: char.url,
           name: char.name,
+          gender: char.gender,
           allegiances: char.allegiances.reduce((houses, houseUrl) => {
             if (houseUrl !== '') {
               const splitHouseUrl = houseUrl.split('/');
@@ -133,8 +135,8 @@ gotController.fetchHouses = async (req, res, next) => {
           familyMembers: {},
           allies: {},
         };
-        if (!data.regions[house.region]) data.regions[house.region] = { houses: [houseName] };
-        else data.regions[house.region].houses.push(houseName);
+        if (!data.regions[house.region]) data.regions[house.region] = { houses: {} };
+        data.regions[house.region].houses[houseName] = true;
         if (!data.houses[houseName]) data.houses[houseName] = houseData;
         else data.houses[houseName] = concatHouseData(data.houses[houseName], houseData);
       }
