@@ -1,7 +1,7 @@
 # command to run:
 # docker-compose -f docker-comp-dev.yml up
 
-# This will start dependencies container & postgres db container with it's associated data volumes container
+# This will start dependencies container
 # and run 'npm run dev'
 
 version: "3"
@@ -15,23 +15,8 @@ services:
     volumes:
       - ./:/usr/src/app
       - node_modules:/usr/src/app/node_modules
-    depends_on:
-      - postgres-db
-    command: ["./scripts/start-dev-app.sh", "postgres-db", "dev"]
-
-  # start database container
-  postgres-db:
-    environment:
-      - POSTGRES_PASSWORD=gotme
-      - POSTGRES_USER=gotcha
-      - POSTGRES_DB=gotfriends
-    image: samanthasalley/got-friends-postgres
-    container_name: got-friends-postgres
-    volumes:
-      - dev-db-volume:/var/lib/postgresql/data
-      - ./scripts/postgres-db:/postgres-db
+    command: ["./scripts/start-dev-app.sh", "dev"]
 
 # shared volumes for development
 volumes:
-  dev-db-volume:
   node_modules:

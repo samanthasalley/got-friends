@@ -31,8 +31,8 @@ fi
 
 echo -e "\033[1;32mpackage.json has been updated\033[0m"
 echo -e "\033[1;36mRemoving existing image from local environment...\033[0m"
-docker image rm samanthasalley/<image-name> --force
+docker image rm samanthasalley/got-friends-dependencies --force
 echo -e "\033[1;36mRebuilding image with updated package.json...\033[0m"
-docker build -t samanthasalley/<image-name> -f Dockerfile-dev .
+docker build -t samanthasalley/got-friends-dependencies -f Dockerfile-dev .
 echo -e "\033[1;32mDone!\033[0m"
-echo -e "\033[1;33mREMINDER: 'docker push samanthasalley/<image-name>' once you're satisfied with the new dependencies. This will push your image to DockerCloud for everyone else to use.\033[0m"
+echo -e "\033[1;33mREMINDER: 'docker push samanthasalley/got-friends-dependencies' once you're satisfied with the new dependencies. This will push your image to DockerCloud for everyone else to use.\033[0m"

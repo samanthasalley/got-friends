@@ -16,7 +16,6 @@ Docker Image is running:
 - [How to Run](#how-to-run): spinning up dev server & things to note
 - [Shortcuts](#shortcuts): helpful commands available and what they do
 - [Dependencies](#dependencies): updating / adding node modules in docker
-- [Database](#database): psql into running docker pg database, db dumps, and more!
 - [Testing](#testing): Running / updating unit tests locally in docker
 - [Troubleshooting](#troubleshooting): What if something is out of sync / not working?
 
@@ -89,7 +88,7 @@ Scripts are defined in docker-compose.yml
 ````
 services:
   <script name>:
-      image: samanthasalley/<image-name> (e.g. dependencies)
+      image: samanthasalley/got-friends-dependencies (e.g. dependencies)
       // specify port to exponse e.g. 3000:80, expose container's port 80 to host's 3000)
       ports: HOST:CONTAINER
       // Specify folders to mount
@@ -169,7 +168,7 @@ To update dependencies, run (from app root directory):
 
     2a. `npm run docker-remove-all:danger` OR `docker rm $(docker ps -a -q -f 'name=<container-name-partial>') --force && docker rmi $(docker images samanthasalley/<image-name-partial>* -q) --force && docker volume rm $(docker volume ls -q -f name=<volume-name-partial>) --force` (remove old images from local machine)
 
-    2b. `npm run image-build` OR `docker build -t samanthasalley/<image-name> -f Dockerfile-dev .` (create new image with Dockerfile)
+    2b. `npm run image-build` OR `docker build -t samanthasalley/got-friends-dependencies -f Dockerfile-dev .` (create new image with Dockerfile)
 
     2c. `npm run docker-dev:hot` OR `docker-compose -f docker-comp-dev.yml -f docker-comp-dev-hot.yml up` (pull down postgres and dev-hot images, while keeping the new local dependencies image build)
 
@@ -179,54 +178,9 @@ To update dependencies, run (from app root directory):
     
     * **NOTE**: You need permissions on dockerhub to do this
 
-    3b. Push / Update Dependencies image on DockerHub: `docker push samanthasalley/<image-name>`
+    3b. Push / Update Dependencies image on DockerHub: `docker push samanthasalley/got-friends-dependencies`
 
     3c. Now everyone has access to new image.  They will need to update their existing dependencies image by either running `npm run update-dep` OR removing their existing image (`npm run image-remove`) and then running a docker-compose command (i.e. `npm run docker-dev:hot`).
-
-
-<a id="database"></a>
-
-## Database Containers - psql
-
-### Overview:
-The database containers created by docker-compose are as follows:
-
-- In development, a postgres-db container is created as well as a postgres-data container. The postgres-db container has the psql client in it.
-
-- The postgres-data container is a lightweight busybox container which essentially just holds the data from your database instance in it's volumes. This means you can start and stop the databse container, remove it, etc.. and your data will be persisted by the postgres-data container. So if you start another postgres-db instance it will re-connect to the postgres-data again. If you delete your postgres-data container you will lose your database contents.
-
-TL:DR - postgres-db (psql), postgres-data (data persistence in volume)
-
-<a id="psql"></a>
-
-### psql:
-To psql into your database run your development environment (`npm run docker-dev` or `npm run docekr-dev:hot`)
-This will start your database containers. In a seperate terminal you can now `bash` into the running containers.
-
-  - Direct to psql inside docker container: `docker exec -it got-friends-postgres psql gotfriends -U gotcha` this will start psql for you as the csxuser in gotfriends.
-
-  - Command prompt in docker container (not direct psql): `docker exec -it got-friends-postgres /bin/bash` this will give you the command prompt inside the container without running psql.
-
-  - You can also run `docker-compose -f docker-comp-postgres.yml up` This will start just the database containers for you (no app).
-
-
-<a id="pg-dump"></a>
-
-### database pg_dump
-To make a dump of your database:
-
-  1. Get the containers running (`npm run docker-dev` or `npm run docker-dev:hot`) OR `docker-compose -f docker-comp-postgres.yml up`.
-
-  2. Now in a seperate terminal run: `docker exec got-friends-postgres ./usr/lib/postgresql/9.6/bin/pg_dump -f /postgres-db/psql_dump.sql -U gotcha gotfriends`
-
-      - This will dump your schema and data to the file `/scripts/postgres-db/psql_dump.sql` - (This file should be kept blank/empty by default)
-
-To restore database from this dump:
-
-  1. Delete `samanthasalley/got-friends-postgres` image and re-build it, see [Dockerfiles](#dockerfiles). 
-  
-      - It will be rebuilt with the contents from `/scripts/postgres-db/psql_dump.sql`. That is why this file should be kept blank/empty by default, save restoring database with incorrect data by accident.
-
 
 <a id="testing"></a>
 

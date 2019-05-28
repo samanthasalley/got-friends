@@ -15,7 +15,7 @@
 * <docker-org-name> {samanthasalley}: the DockerHub org / username where images live
 * <container-name>: dev, dev-hot, or postgres-db container (will need to look at specific context)
 * <specific-container-name>: the name of the docker container for the specified thing (i.e. dependencies / database / etc)
-* <image-name>: dependency or database image name (will need to look at specific context)
+* got-friends-dependencies: dependency or database image name (will need to look at specific context)
 * <specific-image-name>: the name of the docker image for the specified thing (i.e. dependencies / database / etc)
 * got-friends: the specific starter of the container/image/volume name in order to remove all at once for this project
 

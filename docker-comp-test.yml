@@ -1,7 +1,7 @@
 # command to run:
 # docker-compose -f docker-comp-test.yml up
 
-# This will start dependencies container & postgres db container with it's associated data volumes container
+# This will start dependencies container
 # and run 'npm run test'
 
 version: "3"
@@ -15,23 +15,8 @@ services:
     volumes:
       - ./:/usr/src/app
       - node_modules_test:/usr/src/app/node_modules
-    depends_on:
-      - postgres-db-test
-      - postgres-data-test
-    command: ["./scripts/start-dev-app.sh", "postgres-db-test", "test-coverage"]
-
-  postgres-db-test:
-    environment:
-      - POSTGRES_PASSWORD=gotme
-      - POSTGRES_USER=gotcha
-      - POSTGRES_DB=gotfriends
-    image: samanthasalley/got-friends-postgres
-    container_name: got-friends-postgres-db-test
-    volumes:
-      - test-db-volume:/var/lib/postgresql/data
-      - ./scripts/postgres-db:/postgres-db
+    command: "npm run test-coverage"
 
 # shared volumes
 volumes:
-  test-db-volume:
   node_modules_test:

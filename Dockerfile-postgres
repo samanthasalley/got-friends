@@ -1,8 +1,0 @@
-# install postgres 9.6.8
-FROM postgres:9.6.8
-
-# copy in db_init.sql and db_seed.sql if they exist.
-# It will run automatically from within the container to 
-# build out our own personal test database with seed data.
-COPY /scripts/postgres-db/00_db_init.sql /docker-entrypoint-initdb.d/
-COPY /scripts/postgres-db/01_db_seed.sql /docker-entrypoint-initdb.d/

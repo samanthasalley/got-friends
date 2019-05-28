@@ -9,12 +9,11 @@
  * ************************************
  */
 
-const express = require('express');
 const path = require('path');
 const logger = require('morgan');
-const bodyParser = require('body-parser');
 const moment = require('moment');
-const pgPool = require('./models/pgdbmodel');
+const express = require('express');
+const bodyParser = require('body-parser');
 
 const gotRouter = require('./routes/gotRouter');
 
