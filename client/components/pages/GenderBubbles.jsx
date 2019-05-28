@@ -62,10 +62,11 @@ class GenderBubbles extends Component {
     this.toggleTooltip = this.toggleTooltip.bind(this);
   }
 
-  toggleTooltip(node, event) {
-    console.log('node: ', node);
-    console.log(`Toggling tooltipVisible to: ${!tooltipVisible}`);
-    this.setState({ tooltipVisible: !tooltipVisible });
+  toggleTooltip(leafNode, domEvent) {
+    console.log('leafNode: ', leafNode);
+    console.log('domEvent: ', domEvent);
+    console.log(`Toggling tooltipVisible to: ${!this.state.tooltipVisible}`);
+    this.setState({ tooltipVisible: !this.state.tooltipVisible });
   }
 
   // generateGenderTooltip(node, event) {
@@ -144,9 +145,10 @@ class GenderBubbles extends Component {
           renderMode="SVG"
           animation={true}
           colorType="literal"
-          data={this.generateGenderData(regions, houses, characters)}
+          onLeafClick={this.toggleTooltip}
           onLeafMouseOver={this.toggleTooltip}
           onLeafMouseOut={this.toggleTooltip}
+          data={this.generateGenderData(regions, houses, characters)}
         />
       </div>
     );
