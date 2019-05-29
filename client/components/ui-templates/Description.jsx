@@ -34,12 +34,10 @@ const Description = props => {
 
 Description.propTypes = {
   desc: PropTypes.string.isRequired,
-  descStyles: PropTypes.arrayOf(
-    PropTypes.oneOf([
-      // link style classes here...
-      'inline', 'alignLeft', 'alignRight', 'bold', 'tabDescription', 'light', 'thin', 'white', 'descriptionSm', 'removeMarginTop', 'removeMarginBottom'
-    ]).isRequired,
-  ),
+  descStyles: PropTypes.oneOfType([ // class to be applied to first section (sbs = left, tb = top)
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string)
+  ]),
 };
 
 export default Description;

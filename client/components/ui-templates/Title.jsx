@@ -28,7 +28,11 @@ const Title = (props) => {
 };
 
 Title.propTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  titleStyles: PropTypes.oneOfType([ // class to be applied to first section (sbs = left, tb = top)
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string)
+  ]),
 };
 
 export default Title;

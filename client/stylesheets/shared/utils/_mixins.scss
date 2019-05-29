@@ -45,30 +45,12 @@
   transform: translateY($transform);
 }
 
-//Button mixins for solid and transparent buttons
-
-@mixin button() {
-  padding: 1rem 2.5rem;
-  border: none;
-  border-radius: $primary-radius;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-
-  &:hover {
-    cursor: pointer;
-  }
-}
-
+//Button mixins for transparent buttons
 @mixin transp-button($color1) {
-  padding: 1rem 2.5rem;
-  border: none;
   border-radius: $primary-radius;
-  font-size: 1.2rem;
   border: 4px solid $color1;
   background: transparent;
   text-transform: uppercase;
-  letter-spacing: 1px;
   color: $color1;
   transition: 0.1s all ease;
 

@@ -23,7 +23,6 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import NotFound from './components/navigation/NotFound';
 // pages
 import Home from './components/pages/Home';
-// forms
 // utils
 import ScrollToTop from './components/utils/ScrollToTop';
 // other containers / components

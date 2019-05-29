@@ -1,18 +1,7 @@
 @import '../../shared/utils/all';
 
-/* ==== SHARED STYLES ==== */
-// WARNING: This img tag overrides other SCSS files
-// img {
-//   width: 100%;
-//   height: 100%;
-//   // set max width for imgs
-//   max-width: 100px;
-// }
-
 %article {
   display: grid;
-  // border: 1px solid color(text);
-  // padding: 1rem;
 }
 
 /* ==== SIDE BY SIDE SPECIFIC STYLES ==== */
@@ -89,48 +78,6 @@
   }
 }
 
-// Styles for events with a blue left side
-.eventBlue {
-  background: linear-gradient(to top, color(text), color(primary));
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-align: center;
-  text-transform: uppercase;
-  padding: 0 1rem;
-
-  p {
-    font-weight: 300;
-    color: #fff;
-  }
-
-  h3 {
-    font-size: 1.5rem;
-  }
-}
-
-// Styles for events with a green left side
-.eventGreen {
-  background: linear-gradient(to top, color(text), color(text));
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  text-align: center;
-  text-transform: uppercase;
-  padding: 0 1rem;
-
-  p {
-    font-weight: 300;
-    color: #fff;
-  }
-
-  h3 {
-    font-size: 1.5rem;
-  }
-}
-
 ///////////////////////////
 // TOP BOTTOM SPECIFIC STYLES
 //////////////////////////
@@ -167,24 +114,6 @@
   }
 }
 
-
-// CUlture photo sections
-.culture {
-  // top styles
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-}
-
-// Top style for specifically styled images
-.image {
-  height: 200px;
-}
-
 // Default fault style for topBottom articles
 .bottom {
   display: flex;
@@ -205,28 +134,6 @@
   }
 }
 
-// Used for the bottom part of the grad review article
-.gradReview {
-  margin-top: 1rem;
-
-  p {
-    color: #747474;
-  }
-}
-
-// Styles for team members
-.teamMember {
-  p:nth-of-type(1) {
-    margin-top: 1rem;
-  }
-
-  p {
-    text-align: center;
-    margin-top: 0px;
-  }
-}
-
-// Used for some projects and resources topBottom articles
 .paddingSmall {
   display: flex;
   flex-direction: column;
@@ -263,29 +170,6 @@
   }
 }
 
-.company {
-  display: flex;
-  justify-content: center;
-  padding: 1rem 1rem;
-}
-
-// Styled used to cohort and schedule articles padding on the left side
-.cohortAndSchedule {
-  padding: 1rem 0;
-  // padding-right: 2rem;
-
-  @include respond(tab-port) {
-    padding: 1rem;
-  }
-}
-
-// Used for csprep instructor highlight to keep bottom content from being too wide
-.maxWidthAndCenter {
-  max-width: 81rem;
-  margin: auto;
-  text-align: center;
-}
-
 //////////////////////
 // UTILITY CLASSES
 /////////////////////
@@ -309,7 +193,7 @@
   }
 }
 
-// Aligns items in the center used for the articles like the free coding resources for admissions
+// Aligns items in the center
 .alignCenter {
   display: flex;
   flex-direction: column;
@@ -352,18 +236,6 @@
   a {
     margin-top: 1rem;
     align-self: center;
-  }
-}
-
-.eventButton {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  @include respond(phone) { // width < 600?
-    button {
-      margin-top: 2rem;
-    }
   }
 }
 
@@ -417,23 +289,6 @@
 
 .span12 {
   grid-column: span 12;
-}
-
-//Overlay used for when hovering over events
-.overlay {
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(color(text), 0);
-  transition: .3s all ease;
-  
-  button {
-    transition: .3s all ease;
-    opacity: 0;
-  }
 }
 
 ///////////////////////

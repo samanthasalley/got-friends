@@ -24,3 +24,17 @@ export const scrubScriptTags = str => str.replace(/<script.*>.*<\/script>/gi, ''
  *                   (i.e. str = 'hello' => 'Hello')
  */
 export const capitalizeFirstLetter = str => (str.slice(0, 1).toUpperCase() + str.slice(1));
+
+/**
+ * @name srcIsExternal
+ * @param {string} src
+ * @returns {boolean} whether or not string represents an external (http[s]) path
+ */
+export const srcIsExternal = src => src.slice(0, 4) === 'http';
+
+/**
+ * @name srcIsMailto
+ * @param {string} src
+ * @returns {boolean} whether or not string represents an external (mailto) path
+ */
+export const srcIsMailto = src => src.slice(0, 6) === 'mailto';

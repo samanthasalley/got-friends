@@ -60,7 +60,7 @@ class Collapse extends Component {
           style={{ maxHeight: collapsed ? '0px' : `${descriptionHeight}px` }}
           ref={e => this.collapse = e}
         >
-          {this.props.content}
+          {this.props.children}
         </div>
       </div>
     )
@@ -69,7 +69,7 @@ class Collapse extends Component {
 
 Collapse.propTypes = {
   header: PropTypes.string.isRequired,
-  content: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 }
 
 export default Collapse;

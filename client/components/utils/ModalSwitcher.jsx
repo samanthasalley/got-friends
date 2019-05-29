@@ -18,7 +18,6 @@ import { connect } from 'react-redux';
 import * as modalActions from '../../actions/creators/modalActions';
 // components
 import RenderMessage from '../../components/notifications/RenderMessage';
-import ExampleFormContainer from '../forms/containers/ExampleFormContainer';
 
 const mapStateToProps = store => ({
   modalVisible: store.modal.visible,
@@ -49,15 +48,17 @@ class ModalSwitcher extends Component {
        */
       modalOptions: {
         RenderMessage: 'RenderMessage',
-        ExampleFormContainer: 'ExampleFormContainer',
       },
       /**
        * defaultProps object contains default data to pass to specified component
        * -> custom modalProps will be used in leiu of these, if provided
        */
       defaultProps: {
-        ExampleFormContainer: {
-          exampleText: 'Default text provided by ModalSwitcher',
+        RenderMessage: {
+          header: 'Default text provided by ModalSwitcher',
+          children: (
+            <p>Porro vitae dicta. Ullam quam quia voluptatem enim ea architecto. Ut aut rem totam. Asperiores aperiam veritatis consequatur.</p>
+          ),
         },
       }
     }

@@ -13,12 +13,10 @@
 // dependencies
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { srcIsExternal, srcIsMailto } from '../../utils/contentUtil';
 // styling
-import createClassString from '../../utils/createClassString.js';
+import createClassString from '../../utils/createClassString';
 import styles from '../../stylesheets/modules/ui-templates/Figure.scss';
-// helper functions
-const srcIsExternal = src => src.slice(0, 4) === 'http';
-const srcIsMailto = src => src.slice(0, 6) === 'mailto';
 
 const Figure = (props) => {
   const { imgSrc, altTag, caption, figStyles } = props;

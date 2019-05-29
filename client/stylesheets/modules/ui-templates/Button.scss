@@ -1,172 +1,87 @@
 @import "../../shared/utils/all";
 
-// Button extension
-%btn {
-  padding: 1rem 2.5rem;
+// button size variables
+$std-font-size: 1.2rem;
+$lg-font-size: 1.5rem;
+$sm-padding: 0.5rem 1.5rem;
+$md-padding: 1rem 2.5rem;
+$sm-max-width: 10rem;
+$lg-max-width: 15rem;
+$sm-max-height: 3rem;
+$lg-max-height: 5rem;
+
+// button color variables
+$font-color-light: #fff;
+$font-color-dark: color(text);
+$blue-main: blue;
+$blue-hover: darkblue;
+$dark-main: color(text);
+$dark-hover: #6d6d6d;
+$light-main: transparent;
+$light-hover: color(text);
+$transp-hover: #6d6d6d;
+$link-bottom: steelblue;
+$link-background: #0b5796;
+
+// default button
+.btn {
   border: none;
   border-radius: $primary-radius;
-  font-size: 1.2rem;
   text-transform: uppercase;
+  letter-spacing: 1px;
 
   &:hover {
     cursor: pointer;
   }
 }
 
+// sizing options
+.sm {
+  padding: $sm-padding;
+  width: $sm-max-width;
+  height: $sm-max-height;
+  font-size: $std-font-size;
+}
 
-// Styles for the primary button styles
+.md {
+  padding: $md-padding;
+  font-size: $std-font-size;
+}
+
+.lg {
+  width: $input-width;
+  height: $input-height;
+  font-size: $lg-font-size;
+}
+
+// color options
 .blue {
-  @include button;
-  background: linear-gradient(
-    to top,
-    color(text),
-    color(text)
-  );
-  color: #fff;
-
-  a {
-    color: #fff;
-    font-weight: 500;
-  }
+  background: linear-gradient(to top, $blue-main, $blue-main);
+  color: $font-color-light;
 
   &:hover {
-    background: linear-gradient(
-      to top,
-      lighten(color(text), 5%),
-      lighten(color(text), 5%)
-    );
-  }
-
-  // Large button used for used for forms
-  &Large {
-    @include button;
-    background: linear-gradient(
-    to top,
-    color(text),
-    color(text)
-    );
-    width: $input-width;
-    height: $input-height;
-    font-size: 1.5rem;
-    color: white;
-
-    a {
-      color: #fff;
-      font-weight: 500;
-    }
-  }
-
-  &Medium {
-    @include button;
-    background: linear-gradient(
-    to top,
-    color(text),
-    color(text)
-    );
-    width: 26rem;
-    height: $input-height;
-    font-size: 1.4rem;
-    color: white;
-
-    &:hover {
-      background: linear-gradient(
-        to top,
-        lighten(color(text), 5%),
-        lighten(color(text), 5%)
-      );
-    }
-
-    a {
-      color: #fff;
-      font-weight: 500;
-    }
+    background: linear-gradient(to top,
+      lighten($blue-hover, 5%),
+      lighten($blue-hover, 5%));
   }
 }
 
 .dark {
-  @extend %btn;
-  background: color(text);
-  color: white;
+  background: $dark-main;
+  color: $font-color-light;
 
   &:hover {
-    background: #6d6d6d;
+    background: $dark-hover;
   }
 }
 
 .light {
-  padding: 1rem 2.5rem;
-  border: none;
-  background-color: transparent;
-  color: color(text);
-  font-size: 1.2rem;
-  font-weight: 700;
+  background-color: $light-main;
+  color: $font-color-dark;
 
   &:hover {
-    cursor: pointer;
-    background: color(text);
-    color: #fff;
-  }
-
-  &:not(:last-child) {
-    border-right: 1px solid color(text);
-  }
-}
-
-// Buttons styles for tab sections
-.tab {
-  height: 5rem;
-  width: 25.5rem;
-  border: none;
-  background-color: transparent;
-  color: color(text);
-  font-size: 1.4rem;
-  font-weight: 700;
-  transition: all 0.1s ease;
-
-  &:hover {
-    cursor: pointer;
-    background: color(text);
-    color: #fff;
-  }
-
-  &:not(:last-child) {
-    border-right: 2px solid color(text);
-  }
-}
-
-// CLass gives tabs the arrow on the bottom and is applied when a tab is clicked on
-.activeTab {
-  height: 5rem;
-  width: 25.5rem;
-  border: none;
-  background: color(text);
-  color: #fff;
-  font-size: 1.4rem;
-  font-weight: 700;
-  transition: all 0.1s ease;
-
-  &:focus {
-    background: color(text);
-    color: #fff;
-  }
-  
-  &:after {
-    content: "";
-    position: absolute;
-    bottom: -1rem;
-    left: 50%;
-    margin-left: -1rem;
-    width: 0;
-    height: 0;
-    border-top-style: solid;
-    border-top-width: 1rem;
-    border-left: 1rem solid transparent;
-    border-right: 1rem solid transparent;
-    border-top-color: color(text);
-  }
-  
-  &:hover {
-    cursor: pointer;
+    background: $light-hover;
+    color: $font-color-light;
   }
 }
 
@@ -175,87 +90,16 @@
   @include transp-button(color(text));
 
   &:hover {
-    cursor: pointer;
-    background-color: color(text);
-    color: color(text);
+    background-color: $transp-hover;
+    color: $font-color-dark;
   }
 }
 
-// Styles for  buttons with a green border and transparent background
-.transparentGreen {
-  @include transp-button(color(text));
-
-  &:hover {
-    // background: linear-gradient(to top, lighten(color(text), 5%), lighten(color(text), 5%));
-    cursor: pointer;
-    background-color: color(text);
-    color: #fff;
-  }
-
-  &:active {
-    background-color: darken(color(text), 8%);
-    border: 4px solid darken(color(text), 8%);
-  }
-}
-
-.transparentGreenSm {
-  padding: 0.5rem 1.5rem;
-  width: 10rem;
-  height: 3rem;
-  border-radius: $primary-radius;
-  font-size: 1.2rem;
-  border: 4px solid color(text);
-  background: transparent;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: color(text);
-  transition: 0.1s all ease;
-
-  &:hover {
-    // background: linear-gradient(to top, lighten(color(text), 5%), lighten(color(text), 5%));
-    cursor: pointer;
-    background-color: color(text);
-    color: #fff;
-  }
-
-  &:active {
-    background-color: darken(color(text), 8%);
-    border: 4px solid darken(color(text), 8%);
-  }
-}
-
-
-// Button used on some forms, has blue text and blue underline
+// other button types
 .link {
-  // NOTE: Sam changed 2018-11-02 to facilitate button anchor styling
-  // display: inline-block;
-  // padding: 1px 1px;
-  // margin-left: 2px;
-  // font-size: 1.6rem;
-  // color: color(primary);
-  // border: none;
-  // background: none;
-  // text-decoration: underline color(primary);
+  @extend .btn;
   background: transparent;
-  font-size: 1.5rem;
-  border: none;
-  padding: 5px 1rem;
-  text-decoration: none;
-  // color: #7DD0BE;
-  color: color(text);
-  font-weight: 700;
-
-  &:hover {
-    cursor: pointer;
-    // color: darken(color(primary), 5);
-  }
-}
-
-.darkLink {
-  background: transparent;
-  font-size: 1.5rem;
-  border: none;
-  border-bottom: 2px solid color(text);
+  border-bottom: 2px solid $link-bottom;
   text-transform: uppercase;
   padding: 5px 1rem;
   transition: .3s all ease;
@@ -265,7 +109,7 @@
     content: '';
     height: 0%;
     width: 100%;
-    background-color: color(text);
+    background-color: $link-background;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -275,7 +119,7 @@
 
   &:hover {
     cursor: pointer;
-    color: #fff;
+    color: $font-color-light;
 
     &::before {
       height: 100%;
@@ -283,60 +127,12 @@
   }
 
   a {
-    color: #fff;
     font-weight: 500;
-    color: color(text);
+    color: $font-color-dark;
   }
 }
 
-// This button is used in the application process to keep track of the page
-.tracker {
-  width: $input-width;
-  height: $input-height;
-  margin-bottom: 2rem;
-  padding-left: 3rem;
-  border: none;
-  text-align: left;
-  background-color: #fff;
-  font-size: 1.5rem;
-  color: color(text);
-
-  &:hover {
-    cursor: pointer;
-  }
-}
-
-.activeTracker {
-  width: $input-width;
-  height: $input-height;
-  margin-bottom: 2rem;
-  padding-left: 3rem;
-  border-left: 1rem solid #0F3181;
-  border-top: none;
-  border-right: none;
-  border-bottom: none;
-  text-align: left;
-  background-color: #fff;
-  font-size: 1.5rem;
-  color: color(text);
-
-  &:hover {
-    cursor: pointer;
-  }
-}
-
-// Foating nave button
-.floatingNav {
-  border: none;
-  background: transparent;
-  font-size: 1.5rem;
-  text-transform: uppercase;
-
-  &:hover {
-    cursor: pointer;
-  }
-}
-
+// spacing classing
 .inline {
   display: inline;
 }

@@ -12,13 +12,16 @@
 // dependencies
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import * as gotActions from '../../actions/creators/gotActions';
 import PropTypes from 'prop-types';
 // components
-import GenderBubbles from './GenderBubbles';
-import WesterosBurst from './WesterosBurst';
+import Button from '../ui-templates/Button';
+import GenderBubbles from '../graphs/GenderBubbles';
+import WesterosBurst from '../graphs/WesterosBurst';
 // styles / assets
-import styles from '../../stylesheets/modules/PageStyles.scss';
+import styles from '../../stylesheets/modules/pages/Home.scss';
+import pageStyles from '../../stylesheets/modules/PageStyles.scss';
 
 const mapStateToProps = store => ({
   houses: store.data.houses,
@@ -32,6 +35,15 @@ const mapDispatchToProps = dispatch => ({
 });
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      toDisplay: 'options',
+    };
+  }
+
+  updateOption()
 
   async componentDidMount() {
     if (!this.props.regions) this.props.fetchData();
@@ -45,17 +57,15 @@ class Home extends Component {
     );
 
     return (
-      <main className={[styles.centerVertical, styles.centerHorizontal].join(' ')}>
-        {/* <GenderBubbles
-          houses={houses}
-          regions={regions}
-          characters={characters}
-        /> */}
-        <WesterosBurst
-          houses={houses}
-          regions={regions}
-          characters={characters}
-        />
+      <main className={[pageStyles.centerVertical, pageStyles.centerHorizontal].join(' ')}>
+        <div className={styles.options}>
+          <Button theme="btn" color="blue" size="lg">
+            Westerosi Characters by Region
+          </Button>
+          <Button theme="btn" color="dark" size="lg">
+            The Gender Breakdown of Westeros
+          </Button>
+        </div>
       </main>
     );
   }
